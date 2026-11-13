@@ -8,6 +8,8 @@ public class AbilitySO : ScriptableObject
     public float cost;
     public float cooldown;
     public bool canUse;
+    public AffinityType affinity;
+    //public Soundtrack
     
     public IEnumerator StartCooldown()
     {
@@ -16,3 +18,12 @@ public class AbilitySO : ScriptableObject
         canUse = true;
     }
 }
+
+public enum AffinityType
+{
+    None,
+    Water,
+    Fire,
+    Earth,
+    Wind
+};
