@@ -11,6 +11,8 @@ public class AbilitySO : ScriptableObject
     public AffinityType affinity;
     public string desc;
     public Sprite sprite;
+    public AbilityTargetType targetType;
+    public float healValue;
     //public Soundtrack
     
     public IEnumerator StartCooldown()
@@ -28,4 +30,11 @@ public enum AffinityType
     Fire,
     Earth,
     Wind
+};
+
+public enum AbilityTargetType
+{
+    Player,
+    Creature,
+    Enemy
 };
