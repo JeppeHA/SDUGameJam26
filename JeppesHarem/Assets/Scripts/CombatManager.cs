@@ -1,41 +1,64 @@
+using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CombatManager : MonoBehaviour
 {
-    public PartyManager partyManager;
+    public static CombatManager Instance { get; private set; }
+
+    private void Awake()
+    {
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
+    private GameManager gameManager;
+    private PartyManager partyManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         partyManager = GameObject.Find("PartyManager").GetComponent<PartyManager>();
+        
+        
     }
+
+    private List<EnemyInstance> enemies = new List<EnemyInstance>();
+    // Call from GameManager (yet to be implemented)
+    public void PopulateCombat(List<EnemyInstance> enemies)
+    {
+        this.enemies = enemies;
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    public void CalculateTeamDamage(EnemySO enemy)
-    {
-        float totalDamage = 0;
-        foreach (CreatureSO creature in partyManager.team)
-        {
-            totalDamage += creature.atk;
+        foreach (CreatureInstance creature in partyManager.team) 
+        { 
+            if (creature.canAttack)
+            {
+                creature.Attack(enemies);
+            }
         }
-        enemy.hp -= totalDamage;
-    }
 
-    public void EnemyDamage(EnemySO enemy)
-    {
-        if (enemy.canAttack == false) //check if attack is off cooldown
+        foreach (EnemyInstance enemy in enemies)
         {
-            return;
+            if (enemy.canAttack) 
+            {
+                StartCoroutine(enemy.StartCooldown()); //Starts enemy attack cooldown
+                gameManager.player.playerHp -= enemy.atk;
+            }
         }
-        
-        //Insert logic for enemy damage applied to player
 
-        StartCoroutine(enemy.StartCooldown()); //Starts enemy attack cooldown
     }
 
     public void UseAbility(AbilitySO ability, EnemySO enemy)
