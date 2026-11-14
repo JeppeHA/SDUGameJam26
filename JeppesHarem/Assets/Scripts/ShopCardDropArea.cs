@@ -22,6 +22,10 @@ public class ShopCardDropArea : MonoBehaviour
         shopManager = FindFirstObjectByType<ShopManager>();
         if (shopManager.TryGetComponent(out CreatureShop creatureShop))
         {
+            if (creatureSO != null) 
+            {
+                gameManager.GetComponent<PartyManager>().RemoveCreature(creatureSO);
+            }
             creatureSO = (CreatureSO)card.GetComponent<CardController>().creatureToSpawn;
             spriteRenderer.sprite = creatureSO.sprite;
             GameObject creature = gameManager.GetComponent<CreatureFactory>().CreatureInstance(creatureSO);
