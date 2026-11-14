@@ -1,13 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Contains all the spawning logic for when notes should be spawned
 public class NoteSpawner : MonoBehaviour
 {
     public SongChartSO songChart;
     public GameObject rhythmNotePrefab;
     public Vector3[] lanePositions;
-    [SerializeField] private ButtonController[] laneControllers; // one per lane
+    [SerializeField] private ButtonController[] laneControllers;
     [SerializeField] private RhythmManager rhythmManager;
+    //
     [SerializeField] private float approachTime = 2f; // must be > 0
 
     private int nextNoteIndex;
@@ -27,8 +29,11 @@ public class NoteSpawner : MonoBehaviour
         while (nextNoteIndex < songChart.notes.Count)
         {
             NoteData note = sortedNotes[nextNoteIndex];
+            // Converts beats to seconds
             double hitTime = note.beat * (60.0 / songChart.bpm);
-
+            
+            // is the time remaining until the note must be hit
+            // If the note is still more than approachTime seconds away, it’s too early to spawn, so stop
             if (hitTime - rhythmManager.songTime() > approachTime) break;
 
             SpawnNote(note, hitTime);

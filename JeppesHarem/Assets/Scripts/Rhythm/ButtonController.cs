@@ -17,7 +17,7 @@ public class ButtonController : MonoBehaviour
 
     void Update()
     {
-        // Auto-miss notes the player let pass
+        // Auto miss notes the player let pass
         while (notes.Count > 0 &&
                rhythmManager.songTime() - notes.Peek().HitTime > missWindow)
         {
@@ -31,10 +31,12 @@ public class ButtonController : MonoBehaviour
         Debug.Log(notes.Count);
         if (notes.Count == 0) return;
 
-        double diff = rhythmManager.songTime() - notes.Peek().HitTime; // negative = early
+        // negative = early
+        double diff = rhythmManager.songTime() - notes.Peek().HitTime; 
         double abs = Math.Abs(diff);
 
-        if (abs > missWindow) return; // too early, ignore the press
+        // too early, ignore the press
+        if (abs > missWindow) return; 
 
         RhythmNote note = notes.Dequeue();
         Destroy(note.gameObject);
