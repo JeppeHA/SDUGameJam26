@@ -15,14 +15,13 @@ public enum ShopType
         CreatureShop,
         AbilityShop
     }
-
     public NodeType nodeType;
     public ShopType shopType;
     public static ShopType selectedShopType;
     public int rank;
     public List<MapNode> connectedNodes = new List<MapNode>();
-    public static MapNode selectedNode;
     public static int completedNodeRank = -1;
+    public SceneFader sceneFader;
     void Start()
     {
         if (rank == completedNodeRank)
@@ -37,17 +36,17 @@ public enum ShopType
     public void SelectNode()
     {
         completedNodeRank = rank;
-        selectedNode = this;
 
         if (nodeType == NodeType.Combat)
         {
-            SceneManager.LoadScene("GameplayCombat");
+            sceneFader.sceneName = "GameplayCombat";
         }
         else if (nodeType == NodeType.Shop)
         {
             selectedShopType = shopType;
-            SceneManager.LoadScene("Shop");
-        }    
+            sceneFader.sceneName = "Shop";
+        }
+        sceneFader.FadeAndLoadScene();
     }
     public void CompleteNode()
     {
