@@ -14,11 +14,6 @@ public class ShopCard : MonoBehaviour
         _col = GetComponent<Collider2D>();
     }
 
-    private void OnMouseEnter()
-    {
-        Debug.Log("test");
-    }
-
     private void OnMouseDown()
     {
         
