@@ -12,6 +12,8 @@ public class CombatManager : MonoBehaviour
     
     [SerializeField] private List<Transform> enemiesPositions = new List<Transform>();
 
+    private List<CreatureInstance> instantiatedPartyMembers = new List<CreatureInstance>();
+
     private void Awake()
     {
 
@@ -79,7 +81,7 @@ public class CombatManager : MonoBehaviour
             {
                 continue;
             }
-            partyManager.team[i].transform.position = creaturePositions[i].position;
+            instantiatedPartyMembers[i].transform.position = creaturePositions[i].position;
         }
         
         for (int i = 0; i < liveEnemies.Count; i++)
@@ -96,7 +98,7 @@ public class CombatManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach (CreatureInstance creature in partyManager.team) 
+        foreach (CreatureInstance creature in instantiatedPartyMembers) 
         { 
             if (creature.canAttack)
             {

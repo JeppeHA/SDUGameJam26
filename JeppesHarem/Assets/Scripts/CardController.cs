@@ -3,33 +3,62 @@ using UnityEngine;
 
 public class CardController : MonoBehaviour
 {
-    public string _name;
-    public string _type;
-    public string _description;
-    public Sprite _sprite;
-
-    private Canvas _canvas;
+    private Canvas canvas;
     private TMP_Text text;
+    private string info;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    private Vector3 spawnPos;
+    public CreatureSO creatureToSpawn;
+    public AbilitySO abilityToSpawn;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _canvas = GetComponentInChildren<Canvas>();
+        canvas = GetComponentInChildren<Canvas>();
+        canvas.worldCamera = Camera.main;
+        text = GetComponentInChildren<TMP_Text>();
+        canvas.enabled = false;
     }
 
-    public void infoDump(string name, string type, string desc)
+    public void infoDump(string name, string type, string desc, Sprite sprite, Vector3 spawnPos, CreatureSO creatureToSpawn)
     {
-        _name = name;
-        _type = type;
-        _description = desc;
-
-        text.text = $"{name}\n{type}\n{desc}";
+        info = $"{name}\n{type}\n{desc}";
+        spriteRenderer.sprite = sprite;
+        this.spawnPos = spawnPos;
+        this.creatureToSpawn = creatureToSpawn;
 
     }
 
-    private void OnMouseOver()
+    public void infoDump(string name, string type, string desc, Sprite sprite, Vector3 spawnPos, AbilitySO abilityToSpawn)
     {
-        _canvas.gameObject.SetActive(true);
+        info = $"{name}\n{type}\n{desc}";
+        spriteRenderer.sprite = sprite;
+        this.spawnPos = spawnPos;
+        this.abilityToSpawn = abilityToSpawn;
+
+    }
+
+    private void OnMouseEnter() 
+    {
+        canvas.enabled = true;
+        text.text = info;
+    }
+
+    private void OnMouseExit()
+    {
+        canvas.enabled = false;
+    }
+
+    private void OnMouseDown()
+    {
+        canvas.enabled = false;
+    }
+
+    private void OnMouseUp()
+    {
+        canvas.enabled = true;
+        //transform.position = spawnPos;
+
     }
 }
