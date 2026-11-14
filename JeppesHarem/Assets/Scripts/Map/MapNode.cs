@@ -41,7 +41,7 @@ public enum ShopType
 
         if (nodeType == NodeType.Combat)
         {
-            SceneManager.LoadScene("Gameplay");
+            SceneManager.LoadScene("GameplayCombat");
         }
         else if (nodeType == NodeType.Shop)
         {
