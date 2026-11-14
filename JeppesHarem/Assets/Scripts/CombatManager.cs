@@ -45,23 +45,20 @@ public class CombatManager : MonoBehaviour
     }
 
     [SerializeField]
-    private List<EnemyInstance> enemies = new List<EnemyInstance>();
+    private List<EnemyInstance> liveEnemies = new List<EnemyInstance>();
+    [SerializeField]
+    private List<GameObject> enemiesPrefabs = new List<GameObject>();
     
-    // Call from GameManager (yet to be implemented)
-    public void PopulateCombat(List<EnemyInstance> enemies)
-    {
-        this.enemies = enemies;
-    }
 
     public void SpawnEnemies()
     {
 
-        for (int i = 0; i < enemies.Count; i++)
+        for (int i = 0; i < enemiesPrefabs.Count; i++)
         {
-            if(enemies[i] == null)
+            if(enemiesPrefabs[i] == null)
                 continue;
-            GameObject go = Instantiate(enemies[i].gameObject, enemiesPositions[i].position, Quaternion.identity);
-            go.GetComponent<EnemyInstance>().InitalizeValues();
+            GameObject go = Instantiate(enemiesPrefabs[i].gameObject, enemiesPositions[i].position, Quaternion.identity);
+            liveEnemies.Add(go.GetComponent<EnemyInstance>());
         }
 
     }
@@ -71,7 +68,6 @@ public class CombatManager : MonoBehaviour
         if (partyManager.team.Count == 0)
             return;
         SetPositions();
-        PopulateCombat(enemies);
         SpawnEnemies();
     }
     
@@ -86,13 +82,13 @@ public class CombatManager : MonoBehaviour
             partyManager.team[i].transform.position = creaturePositions[i].position;
         }
         
-        for (int i = 0; i < enemies.Count; i++)
+        for (int i = 0; i < liveEnemies.Count; i++)
         {
-            if (enemies[i] == null)
+            if (liveEnemies[i] == null)
             {
                 continue;
             }
-            enemies[i].transform.position = enemiesPositions[i].position;
+            liveEnemies[i].transform.position = enemiesPositions[i].position;
         }
     }
 
@@ -104,17 +100,12 @@ public class CombatManager : MonoBehaviour
         { 
             if (creature.canAttack)
             {
-                creature.Attack(enemies);
-                double totalHealt = 0;
-                foreach (EnemyInstance enemy in enemies)
-                {
-                    Debug.Log(enemy.gameObject.name + " : " + enemy.hp);
-                }
-                Debug.Log("EnemyHP: " + totalHealt);
+                creature.Attack(liveEnemies);
+                Debug.Log("EnemyHP: " + liveEnemies[0].health);
             }
         }
 
-        foreach (EnemyInstance enemy in enemies)
+        foreach (EnemyInstance enemy in liveEnemies)
         {
             if (enemy.canAttack) 
             {
