@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="bac61763-e344-4995-99c3-d4224e007618" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.JeppesHarem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JeppesHarem/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DevScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/DevScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CombatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CombatManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Rhythm/ButtonController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Rhythm/ButtonController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/KeyIndication.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/KeyIndication.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/TestChart.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/TestChart.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/KeyIndicator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/KeyIndicator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +91,7 @@
       <option name="presentableId" value="Default" />
       <updated>1794650709431</updated>
       <workItem from="1794650713159" duration="8890000" />
-      <workItem from="1794666694976" duration="1575000" />
+      <workItem from="1794666694976" duration="2564000" />
     </task>
     <servers />
   </component>
