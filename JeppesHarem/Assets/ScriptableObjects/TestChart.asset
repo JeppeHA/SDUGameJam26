@@ -17,10 +17,24 @@ MonoBehaviour:
   - beat: 5
     lane: 1
   - beat: 7
-    lane: 2
-  - beat: 10
-    lane: 3
+    lane: 1
+  - beat: 9
+    lane: 1
+  - beat: 11
+    lane: 1
+  - beat: 13
+    lane: 1
   - beat: 15
-    lane: 4
-  - beat: 10
-    lane: 2
+    lane: 1
+  - beat: 17
+    lane: 1
+  - beat: 19
+    lane: 1
+  - beat: 21
+    lane: 1
+  - beat: 23
+    lane: 1
+  - beat: 25
+    lane: 1
+  - beat: 27
+    lane: 1
