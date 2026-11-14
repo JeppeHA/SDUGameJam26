@@ -9,11 +9,15 @@ public class EnemyInstance : MonoBehaviour
     public float hp;
     public float cooldown = 0f;
     public bool canAttack;
+    private SpriteRenderer spriteRenderer;
+    
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void InitalizeValues()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = enemyData.sprite;
         atk = enemyData.atk;
         hp = enemyData.hp;
         cooldown = enemyData.cooldown;
