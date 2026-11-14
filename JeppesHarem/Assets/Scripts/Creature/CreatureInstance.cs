@@ -47,20 +47,20 @@ public class CreatureInstance : MonoBehaviour
     public void Attack(List<EnemyInstance> enemies)
     {
         StartCoroutine(StartCooldown());
-        EnemySelection(enemies).hp -= atk;
+        EnemySelection(enemies).health -= atk;
     }
 
     private EnemyInstance EnemySelection(List<EnemyInstance> enemies)
     {
         if (enemies.Count == 0) return null;
         EnemyInstance currentTarget = enemies[0];
-        float lowestHealth = enemies[0].hp;
+        float lowestHealth = enemies[0].health;
         foreach (var enemy in enemies)
         {
-            if (enemy.hp <= lowestHealth)
+            if (enemy.health <= lowestHealth)
             {
                 currentTarget = enemy;
-                lowestHealth = enemy.hp;
+                lowestHealth = enemy.health;
             }
         }
         return currentTarget;

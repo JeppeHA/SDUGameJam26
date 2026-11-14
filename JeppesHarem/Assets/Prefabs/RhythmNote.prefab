@@ -104,3 +104,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23354444b254eeb45a45c05073499050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RhythmNote
+  hitX: -500

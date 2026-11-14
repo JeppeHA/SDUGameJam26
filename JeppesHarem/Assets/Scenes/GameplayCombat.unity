@@ -1214,6 +1214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139ba24f7832543c9920616789a7199b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PartyManager
+  starterCreatureData: {fileID: 0}
   team: []
   teamCap: 3
 --- !u!1 &693773108
@@ -1878,7 +1879,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 882872379}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1316035856
 SpriteRenderer:
@@ -2716,9 +2717,9 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1859042264}
   - {fileID: 215222510}
   - {fileID: 1949082347}
   - {fileID: 2123387670}
   - {fileID: 525393606}
   - {fileID: 449368745}
+  - {fileID: 1316035855}

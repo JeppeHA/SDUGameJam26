@@ -2,10 +2,15 @@ using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance { get; private set; }
+    [SerializeField]
+    private List<Transform> creaturePositions = new List<Transform>();
+    
+    [SerializeField] private List<Transform> enemiesPositions = new List<Transform>();
 
     private void Awake()
     {
@@ -22,20 +27,69 @@ public class CombatManager : MonoBehaviour
 
     private GameManager gameManager;
     private PartyManager partyManager;
+
+    public UnityEvent combatInitiated;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        partyManager = GameObject.Find("PartyManager").GetComponent<PartyManager>();
+        gameManager = GameObject.FindFirstObjectByType<GameManager>();
+        partyManager = GameObject.FindFirstObjectByType<PartyManager>();
         
+        combatInitiated.AddListener(FindFirstObjectByType<PartyManager>().PopulateTeam);
+        
+        combatInitiated.Invoke();
+        
+        StartCombat();
         
     }
 
-    private List<EnemyInstance> enemies = new List<EnemyInstance>();
-    // Call from GameManager (yet to be implemented)
-    public void PopulateCombat(List<EnemyInstance> enemies)
+    [SerializeField]
+    private List<EnemyInstance> liveEnemies = new List<EnemyInstance>();
+    [SerializeField]
+    private List<GameObject> enemiesPrefabs = new List<GameObject>();
+    
+
+    public void SpawnEnemies()
     {
-        this.enemies = enemies;
+
+        for (int i = 0; i < enemiesPrefabs.Count; i++)
+        {
+            if(enemiesPrefabs[i] == null)
+                continue;
+            GameObject go = Instantiate(enemiesPrefabs[i].gameObject, enemiesPositions[i].position, Quaternion.identity);
+            liveEnemies.Add(go.GetComponent<EnemyInstance>());
+        }
+
+    }
+
+    public void StartCombat()
+    {
+        if (partyManager.team.Count == 0)
+            return;
+        SetPositions();
+        SpawnEnemies();
+    }
+    
+    private void SetPositions()
+    {
+        for (int i = 0; i < partyManager.team.Count; i++)
+        {
+            if (partyManager.team[i] == null)
+            {
+                continue;
+            }
+            partyManager.team[i].transform.position = creaturePositions[i].position;
+        }
+        
+        for (int i = 0; i < liveEnemies.Count; i++)
+        {
+            if (liveEnemies[i] == null)
+            {
+                continue;
+            }
+            liveEnemies[i].transform.position = enemiesPositions[i].position;
+        }
     }
 
 
@@ -46,16 +100,17 @@ public class CombatManager : MonoBehaviour
         { 
             if (creature.canAttack)
             {
-                creature.Attack(enemies);
+                creature.Attack(liveEnemies);
+                Debug.Log("EnemyHP: " + liveEnemies[0].health);
             }
         }
 
-        foreach (EnemyInstance enemy in enemies)
+        foreach (EnemyInstance enemy in liveEnemies)
         {
             if (enemy.canAttack) 
             {
                 StartCoroutine(enemy.StartCooldown()); //Starts enemy attack cooldown
-                gameManager.player.playerHp -= enemy.atk;
+                //gameManager.player.playerHp -= enemy.atk;
             }
         }
 
