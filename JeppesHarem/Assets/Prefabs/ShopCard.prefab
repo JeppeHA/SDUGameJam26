@@ -407,7 +407,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: bb9114544013840e08d53035638df33c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -478,6 +478,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardController
   spriteRenderer: {fileID: 9081028016743818589}
+  creatureToSpawn: {fileID: 0}
+  abilityToSpawn: {fileID: 0}
 --- !u!114 &8216928206914512701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,6 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DragAndDrop
   myCam: {fileID: 0}
+  isDragging: 0
 --- !u!1 &8371666956910819220
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,10 +573,10 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0.066497445, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
