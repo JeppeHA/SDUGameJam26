@@ -52,7 +52,6 @@ public class NoteSpawner : MonoBehaviour
         Debug.Log(pos);
         GameObject go = Instantiate(rhythmNotePrefab, new Vector3(pos.x, pos.y, transform.position.z),
             Quaternion.identity,nodeLayout.transform);
-        go.transform.rotation = Quaternion.Euler(0, 0, 45);
         RhythmNote note = go.GetComponent<RhythmNote>();
         note.Initialize(rhythmManager, hitTime, pos.x, approachTime);
         laneControllers[lane].Register(note);
