@@ -829,8 +829,9 @@ MonoBehaviour:
   combatInitiated:
     m_PersistentCalls:
       m_Calls: []
-  enemies:
-  - {fileID: 677353847017972477, guid: ec4d74c2c0826d440ba5da87ef0c8eeb, type: 3}
+  liveEnemies: []
+  enemiesPrefabs:
+  - {fileID: 2388335575016197425, guid: ec4d74c2c0826d440ba5da87ef0c8eeb, type: 3}
 --- !u!4 &277251171
 Transform:
   m_ObjectHideFlags: 0

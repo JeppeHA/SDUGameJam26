@@ -3,17 +3,25 @@ using System.Collections.Generic;
 
 public class Shop : MonoBehaviour
 {
-    public List<ScriptableObject> allShopItems = new List<ScriptableObject>();
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public Object[] allShopItems;
+    public List<Object> shopItems = new List<Object>(4);
+    private Transform[] spawnPos;
+    private int shopCap = 4;
+    private GameObject cardPrefab;
+    public void LoadShop(string path)
     {
-        
-    }
+        allShopItems = Resources.LoadAll(path, typeof(ScriptableObject));
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        shopItems.Clear();
+        if (allShopItems.Length != 0)
+        {
+            while (shopItems.Count < shopCap)
+            {
+                CreatureSO itemInfo = (CreatureSO)allShopItems[Random.Range(0, allShopItems.Length)];
+                shopItems.Add(itemInfo);
+                GameObject shopItem = GameObject.Instantiate(cardPrefab, spawnPos[shopItems.Count - 1].transform);
+                shopItem.GetComponent<CardController>().infoDump(itemInfo.name, itemInfo._type.ToString(), $"speed: {itemInfo.atkSpeed}\n dmg: {itemInfo.atk}\n hp: {itemInfo.hp}");
+            }
+        }
     }
 }
