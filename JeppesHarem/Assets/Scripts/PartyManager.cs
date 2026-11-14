@@ -26,13 +26,39 @@ public class PartyManager : MonoBehaviour
     public int teamCap = 3;
     private PlayerSO player;
 
-    private void Start()
+
+    public void Start()
+    {
+        
+    }
+
+    public void InitializeStarterCreature()
     {
         CreatureFactory creatureFactory = GetComponent<CreatureFactory>();
         starterCreaturePrefab = creatureFactory.CreatureInstance(starterCreatureData);
         AddCreature(starterCreaturePrefab.GetComponent<CreatureInstance>());
-        PrintParty();
+        Debug.Log(starterCreaturePrefab.name);
     }
+    
+    
+    public void PopulateTeam()
+    {
+        if (team.Count <= 0)
+        {
+            InitializeStarterCreature();
+        }
+        Debug.Log("PopulateTeam");
+        for (int i = 0; i < team.Count; i++)
+        {
+            if (team[i] == null)
+            {
+                Instantiate(team[i]);
+            }
+        }
+    }
+    
+    
+    
 
     public void AddCreature(CreatureInstance newCreature)
     {
@@ -50,11 +76,6 @@ public class PartyManager : MonoBehaviour
             return;
         }
         team.Remove(oldCreature);
-    }
-
-    public void PlaceCreature(CreatureInstance creature, Vector3 position)
-    {
-        creature.transform.position = position;
     }
 
     public void PrintParty()
