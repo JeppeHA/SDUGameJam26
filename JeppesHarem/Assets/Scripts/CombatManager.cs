@@ -81,6 +81,7 @@ public class CombatManager : MonoBehaviour
             {
                 continue;
             }
+            // TODO: instantiatedPartyMembers never added
             instantiatedPartyMembers[i].transform.position = creaturePositions[i].position;
         }
         
