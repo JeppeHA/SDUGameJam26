@@ -15,7 +15,7 @@ public class AbilityShop : Shop
             {
                 foreach (ScriptableObject obj in allShopItems)
                 {
-                    if (obj is CreatureSO)
+                    if (obj is AbilitySO)
                     {
                         shopAbilities.Add((AbilitySO)allShopItems[Random.Range(0, allShopItems.Count)]);
                     }
