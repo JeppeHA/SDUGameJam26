@@ -1,10 +1,13 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ButtonController : MonoBehaviour
 {
     [SerializeField] private RhythmManager rhythmManager;
+    [SerializeField] private KeyIndicator indicator;
+    [SerializeField] private float indicationTime;
 
     [Header("Timing windows (seconds)")]
     [SerializeField] private double perfectWindow = 0.05;
@@ -14,6 +17,8 @@ public class ButtonController : MonoBehaviour
     private readonly Queue<RhythmNote> notes = new Queue<RhythmNote>();
 
     public void Register(RhythmNote note) => notes.Enqueue(note);
+
+
 
     void Update()
     {
@@ -41,8 +46,32 @@ public class ButtonController : MonoBehaviour
         RhythmNote note = notes.Dequeue();
         Destroy(note.gameObject);
 
-        if (abs <= perfectWindow) Debug.Log($"Perfect ({diff:F3})");
-        else if (abs <= goodWindow) Debug.Log($"Good ({diff:F3})");
-        else Debug.Log($"Bad ({diff:F3})");
+        if (abs <= perfectWindow)
+        {
+            Debug.Log($"Perfect ({diff:F3})");
+            indicator.SetText("Perfect!", Color.yellow);
+            indicator.EnableKeyIndicator();
+        }
+        else if (abs <= goodWindow)
+        {
+            Debug.Log($"Good ({diff:F3})");
+            indicator.SetText("Good", Color.green);
+            indicator.EnableKeyIndicator();
+        }
+        else
+        {
+            Debug.Log($"Bad ({diff:F3})");
+            Debug.Log($"Good ({diff:F3})");
+            indicator.SetText("Bad!", Color.red);
+            indicator.EnableKeyIndicator();
+        }
+
+        StartCoroutine(HideIndicator());
+    }
+
+    private IEnumerator HideIndicator()
+    {
+        yield return new WaitForSeconds(indicationTime);
+        indicator.DisableKeyIndicator();
     }
 }
