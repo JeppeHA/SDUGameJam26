@@ -9,6 +9,8 @@ public class CombatManager : MonoBehaviour
     public static CombatManager Instance { get; private set; }
     [SerializeField]
     private List<Transform> creaturePositions = new List<Transform>();
+    
+    [SerializeField] private List<Transform> enemiesPositions = new List<Transform>();
 
     private void Awake()
     {
@@ -42,25 +44,38 @@ public class CombatManager : MonoBehaviour
         
     }
 
+    [SerializeField]
     private List<EnemyInstance> enemies = new List<EnemyInstance>();
+    
     // Call from GameManager (yet to be implemented)
     public void PopulateCombat(List<EnemyInstance> enemies)
     {
         this.enemies = enemies;
     }
 
+    public void SpawnEnemies()
+    {
+
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if(enemies[i] == null)
+                continue;
+            GameObject go = Instantiate(enemies[i].gameObject, enemiesPositions[i].position, Quaternion.identity);
+            go.GetComponent<EnemyInstance>().InitalizeValues();
+        }
+
+    }
+
     public void StartCombat()
     {
-        Debug.Log("Starting Combat");
-        Debug.Log(partyManager.team.Count);
         if (partyManager.team.Count == 0)
             return;
-        Debug.Log("INIT COMBAT");
-        SetCreaturePosition();
+        SetPositions();
         PopulateCombat(enemies);
+        SpawnEnemies();
     }
     
-    private void SetCreaturePosition()
+    private void SetPositions()
     {
         for (int i = 0; i < partyManager.team.Count; i++)
         {
@@ -68,9 +83,16 @@ public class CombatManager : MonoBehaviour
             {
                 continue;
             }
-            Debug.Log(partyManager.team[i].name);
-            Debug.Log("Creature position: " + creaturePositions[i].position);
             partyManager.team[i].transform.position = creaturePositions[i].position;
+        }
+        
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i] == null)
+            {
+                continue;
+            }
+            enemies[i].transform.position = enemiesPositions[i].position;
         }
     }
 
@@ -83,6 +105,12 @@ public class CombatManager : MonoBehaviour
             if (creature.canAttack)
             {
                 creature.Attack(enemies);
+                double totalHealt = 0;
+                foreach (EnemyInstance enemy in enemies)
+                {
+                    Debug.Log(enemy.gameObject.name + " : " + enemy.hp);
+                }
+                Debug.Log("EnemyHP: " + totalHealt);
             }
         }
 

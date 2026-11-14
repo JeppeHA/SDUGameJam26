@@ -824,6 +824,13 @@ MonoBehaviour:
   - {fileID: 1883665461}
   - {fileID: 965525773}
   - {fileID: 482019224}
+  enemiesPositions:
+  - {fileID: 1316035855}
+  combatInitiated:
+    m_PersistentCalls:
+      m_Calls: []
+  enemies:
+  - {fileID: 677353847017972477, guid: ec4d74c2c0826d440ba5da87ef0c8eeb, type: 3}
 --- !u!4 &277251171
 Transform:
   m_ObjectHideFlags: 0

@@ -47,7 +47,6 @@ public class PartyManager : MonoBehaviour
         {
             InitializeStarterCreature();
         }
-        Debug.Log("PopulateTeam");
         for (int i = 0; i < team.Count; i++)
         {
             if (team[i] == null)

@@ -8,7 +8,7 @@ public class EnemySO : ScriptableObject
     public float hp;
     public float cooldown = 0f;
     public bool canAttack;
-    
+    public Sprite sprite;
     
 }
 
