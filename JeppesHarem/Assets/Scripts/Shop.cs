@@ -1,15 +1,18 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Shop : MonoBehaviour
+public abstract class Shop : MonoBehaviour
 {
     public Object[] allShopItems;
     public List<Object> shopItems = new List<Object>(4);
-    private Transform[] spawnPos;
+    [SerializeField] private GameObject[] spawnPos;
     private int shopCap = 4;
-    private GameObject cardPrefab;
+    private ShopManager shopManager;
+    
     public void LoadShop(string path)
     {
+        shopManager = GetComponent<ShopManager>();
+        spawnPos = GameObject.FindGameObjectsWithTag("shopSpawn");
         allShopItems = Resources.LoadAll(path, typeof(ScriptableObject));
 
         shopItems.Clear();
@@ -17,11 +20,10 @@ public class Shop : MonoBehaviour
         {
             while (shopItems.Count < shopCap)
             {
-                CreatureSO itemInfo = (CreatureSO)allShopItems[Random.Range(0, allShopItems.Length)];
-                shopItems.Add(itemInfo);
-                GameObject shopItem = GameObject.Instantiate(cardPrefab, spawnPos[shopItems.Count - 1].transform);
-                shopItem.GetComponent<CardController>().infoDump(itemInfo.name, itemInfo._type.ToString(), $"speed: {itemInfo.atkSpeed}\n dmg: {itemInfo.atk}\n hp: {itemInfo.hp}");
+                InfoDump(shopManager.cardPrefab, spawnPos);
             }
         }
     }
+
+    public abstract void InfoDump(GameObject cardPrefab, GameObject[] spawnPos);
 }

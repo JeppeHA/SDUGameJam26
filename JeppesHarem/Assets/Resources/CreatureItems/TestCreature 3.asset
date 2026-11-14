@@ -16,7 +16,7 @@ MonoBehaviour:
   hp: 5
   atkSpeed: 67
   atk: 2
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 17fa84703485d314b8d6b5216987d4b1, type: 3}
   _type: 0
   animator: {fileID: 0}
   canAttack: 0

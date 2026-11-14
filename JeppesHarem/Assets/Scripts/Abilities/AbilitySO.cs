@@ -9,6 +9,8 @@ public class AbilitySO : ScriptableObject
     public float cooldown;
     public bool canUse;
     public AffinityType affinity;
+    public string desc;
+    public Sprite sprite;
     //public Soundtrack
     
     public IEnumerator StartCooldown()

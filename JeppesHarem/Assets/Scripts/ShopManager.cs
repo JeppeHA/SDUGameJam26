@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
+    public GameObject cardPrefab;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
