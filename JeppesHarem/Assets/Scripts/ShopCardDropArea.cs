@@ -6,6 +6,7 @@ public class ShopCardDropArea : MonoBehaviour
     [SerializeField] private CreatureSO creatureSO;
     [SerializeField] private AbilitySO abilitySO;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    private GameObject shadow;
     private ShopManager shopManager;
     private GameObject gameManager;
 
@@ -18,6 +19,7 @@ public class ShopCardDropArea : MonoBehaviour
     {
         Debug.Log("test");
         spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        shadow = transform.GetChild(1).gameObject;
 
         shopManager = FindFirstObjectByType<ShopManager>();
         if (shopManager.TryGetComponent(out CreatureShop creatureShop))
@@ -28,6 +30,7 @@ public class ShopCardDropArea : MonoBehaviour
             }
             creatureSO = (CreatureSO)card.GetComponent<CardController>().creatureToSpawn;
             spriteRenderer.sprite = creatureSO.sprite;
+            shadow.SetActive(true);
             GameObject creature = gameManager.GetComponent<CreatureFactory>().CreatureInstance(creatureSO);
             gameManager.GetComponent<PartyManager>().AddCreature(creature.GetComponent<CreatureInstance>().creature);
             Destroy(creature);

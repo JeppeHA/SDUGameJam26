@@ -8,24 +8,33 @@ public class PlayerInstance : MonoBehaviour
     public float playerHp;
     public Sprite playerSprite;
     public Animator anim;
+    public AbilitySO ability1;
+    public AbilitySO ability2;
 
+
+    private void Start()
+    {
+        InitializeValues(player);
+    }
 
     public void InitializeValues(PlayerSO playerData)
     {
         player = playerData;
         playerHp = playerData.playerHp;
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _spriteRenderer.sprite = playerSprite;
+        //_spriteRenderer.sprite = playerSprite;
         anim = playerData.animator;
+        ability1 = playerData.firstAbility;
+        ability2 = playerData.secondAbility;
     }
 
-    public void TakeDamage(List<EnemyInstance> enemies)
+    public void TakeDamage(EnemyInstance enemy)
     {
-        float totalDmg = 0;
-        foreach (EnemyInstance enemy in enemies)
-        {
-            totalDmg += enemy.atk;
-        }
-        playerHp -= totalDmg;
+        playerHp -= enemy.atk;
+    }
+
+    public void HealPlayer(AbilitySO ability)
+    {
+        playerHp += ability.healValue;
     }
 }

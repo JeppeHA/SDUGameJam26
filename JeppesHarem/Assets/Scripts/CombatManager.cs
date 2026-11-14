@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,7 +14,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private List<Transform> enemiesPositions = new List<Transform>();
     public Transform playerPos;
 
-    private List<CreatureInstance> instantiatedPartyMembers = new List<CreatureInstance>();
+    [SerializeField] private List<CreatureInstance> instantiatedPartyMembers = new List<CreatureInstance>();
 
     private void Awake()
     {
@@ -39,6 +40,7 @@ public class CombatManager : MonoBehaviour
     {
         gameManager = GameObject.FindFirstObjectByType<GameManager>();
         partyManager = GameObject.FindFirstObjectByType<PartyManager>();
+        player = GetComponent<PlayerInstance>();
         
         combatInitiated.AddListener(FindFirstObjectByType<PartyManager>().PopulateTeam);
         
@@ -62,6 +64,7 @@ public class CombatManager : MonoBehaviour
             if(enemiesPrefabs[i] == null)
                 continue;
             GameObject go = Instantiate(enemiesPrefabs[i].gameObject, enemiesPositions[i].position, Quaternion.identity);
+            Debug.Log("livenemies add");
             liveEnemies.Add(go.GetComponent<EnemyInstance>());
         }
     }
@@ -73,11 +76,12 @@ public class CombatManager : MonoBehaviour
 
     public void StartCombat()
     {
+        Debug.Log("start combat");
         if (partyManager.team.Count == 0)
             return;
         SetPositions();
         SpawnEnemies();
-        SpawnPlayer();
+        //SpawnPlayer();
     }
     
     private void SetPositions()
@@ -88,6 +92,8 @@ public class CombatManager : MonoBehaviour
             {
                 continue;
             }
+            GameObject memberToInstatiate = gameManager.GetComponent<CreatureFactory>().CreatureInstance(partyManager.team[i]);
+            instantiatedPartyMembers.Add(memberToInstatiate.GetComponent<CreatureInstance>().creatureInstance);
             instantiatedPartyMembers[i].transform.position = creaturePositions[i].position;
         }
         
@@ -110,7 +116,20 @@ public class CombatManager : MonoBehaviour
             if (creature.canAttack)
             {
                 creature.Attack(liveEnemies);
-                Debug.Log("EnemyHP: " + liveEnemies[0].health);
+                
+                
+                for (int i = 0; i < liveEnemies.Count; i++)
+                {
+                    if (liveEnemies[i].health < 0)
+                    {
+                        liveEnemies.Remove(liveEnemies[i]);
+                    }
+                    if (liveEnemies.Count == 0)
+                    {
+                        //Win
+                        Debug.Log("Win!");
+                    }
+                }
             }
         }
 
@@ -119,7 +138,13 @@ public class CombatManager : MonoBehaviour
             if (enemy.canAttack) 
             {
                 StartCoroutine(enemy.StartCooldown()); //Starts enemy attack cooldown
-                player.TakeDamage(liveEnemies);
+                player.TakeDamage(enemy);
+                Debug.Log(player.playerHp);
+                if (player.playerHp < 0)
+                {
+                    //Lose
+                    Debug.Log("Lose");
+                }
             }
         }
 

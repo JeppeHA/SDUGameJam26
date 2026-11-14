@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSO
   playerHp: 100
+  notes: 0
+  playerInstrument: {fileID: 0}
+  startCreature: {fileID: 11400000, guid: fbb550df4ad6a4e59800c8d1a64eba8b, type: 2}
+  firstAbility: {fileID: 11400000, guid: 5f4634b14ed7fb64b978b41947f0adb4, type: 2}
+  secondAbility: {fileID: 11400000, guid: f097c84325a961b43a88befa4bef056d, type: 2}
+  animator: {fileID: 0}
