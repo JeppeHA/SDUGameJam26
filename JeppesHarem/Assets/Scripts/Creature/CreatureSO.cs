@@ -11,7 +11,7 @@ public class CreatureSO : ScriptableObject
     public float atk;
     public Sprite sprite;
     public Typing _type;
-    public Animator animator;
+    public int animator;
     public bool canAttack;
     public float cooldown = 0f;
 
