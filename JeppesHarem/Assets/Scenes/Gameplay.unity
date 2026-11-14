@@ -1576,6 +1576,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1859042264}
   - component: {fileID: 1859042263}
+  - component: {fileID: 1859042265}
+  - component: {fileID: 1859042266}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1611,6 +1613,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1859042265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859042262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 139ba24f7832543c9920616789a7199b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PartyManager
+  starterCreatureData: {fileID: 11400000, guid: 63095557bd1de4481bdaee29ca1bc1da, type: 2}
+  team: []
+  teamCap: 3
+--- !u!114 &1859042266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859042262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd926372d5fe92a439363e3d341c610c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CreatureFactory
+  creaturePrefab: {fileID: 8688290608812933398, guid: 972be548b08816d4cbcdd2638b27e344, type: 3}
 --- !u!1 &1883665460
 GameObject:
   m_ObjectHideFlags: 0

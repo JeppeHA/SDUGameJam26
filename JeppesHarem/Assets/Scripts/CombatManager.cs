@@ -27,6 +27,8 @@ public class CombatManager : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         partyManager = GameObject.Find("PartyManager").GetComponent<PartyManager>();
+        
+        
     }
 
     private List<EnemyInstance> enemies = new List<EnemyInstance>();

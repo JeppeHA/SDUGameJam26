@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d90fdae9ae56412e862301a07d9330d, type: 3}
   m_Name: Seal
   m_EditorClassIdentifier: Assembly-CSharp::CreatureSO
+  name: Seal
   hp: 0
   atkSpeed: 0
   atk: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  _type: 0
   animator: {fileID: 0}
+  canAttack: 0
+  cooldown: 0
