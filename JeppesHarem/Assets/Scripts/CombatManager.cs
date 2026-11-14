@@ -110,7 +110,7 @@ public class CombatManager : MonoBehaviour
             if (enemy.canAttack) 
             {
                 StartCoroutine(enemy.StartCooldown()); //Starts enemy attack cooldown
-                gameManager.player.playerHp -= enemy.atk;
+                //gameManager.player.playerHp -= enemy.atk;
             }
         }
 
