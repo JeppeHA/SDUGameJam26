@@ -7,11 +7,14 @@ public class ShopManager : MonoBehaviour
     {
         if (MapNode.selectedShopType == MapNode.ShopType.CreatureShop)
         {
-            gameObject.AddComponent<CreatureShop>();
+            CreatureShop creatureShop = gameObject.AddComponent<CreatureShop>();
+            creatureShop.LoadShop("CreatureItems");
         }
         else if (MapNode.selectedShopType == MapNode.ShopType.AbilityShop)
         {
             gameObject.AddComponent<AbilityShop>();
+            AbilityShop abilityShop = gameObject.AddComponent<AbilityShop>();
+            abilityShop.LoadShop("AbilityItems");
         }
     }
 }
