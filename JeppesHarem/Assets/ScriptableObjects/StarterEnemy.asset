@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StarterEnemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
   atk: 2
-  hp: 20
+  hp: 200
   cooldown: 5
   canAttack: 1
   sprite: {fileID: 21300000, guid: 0c373058cd1ceda4ab1b5a3ca0a0d403, type: 3}
