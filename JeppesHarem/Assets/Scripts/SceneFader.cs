@@ -7,7 +7,7 @@ public class SceneFader : MonoBehaviour
 {
     public Image image;
     public string sceneName;
-    public float duration;
+    public float duration = 1;
     private void Start()
     {
         StartCoroutine(FadeOut());
