@@ -11,6 +11,7 @@ public class CombatManager : MonoBehaviour
     private List<Transform> creaturePositions = new List<Transform>();
     
     [SerializeField] private List<Transform> enemiesPositions = new List<Transform>();
+    public Transform playerPos;
 
     private List<CreatureInstance> instantiatedPartyMembers = new List<CreatureInstance>();
 
@@ -29,6 +30,7 @@ public class CombatManager : MonoBehaviour
 
     private GameManager gameManager;
     private PartyManager partyManager;
+    private PlayerInstance player;
 
     public UnityEvent combatInitiated;
     
@@ -62,7 +64,11 @@ public class CombatManager : MonoBehaviour
             GameObject go = Instantiate(enemiesPrefabs[i].gameObject, enemiesPositions[i].position, Quaternion.identity);
             liveEnemies.Add(go.GetComponent<EnemyInstance>());
         }
+    }
 
+    public void SpawnPlayer()
+    {
+        Instantiate(player, playerPos.position, Quaternion.identity);
     }
 
     public void StartCombat()
@@ -71,6 +77,7 @@ public class CombatManager : MonoBehaviour
             return;
         SetPositions();
         SpawnEnemies();
+        SpawnPlayer();
     }
     
     private void SetPositions()
@@ -113,7 +120,7 @@ public class CombatManager : MonoBehaviour
             if (enemy.canAttack) 
             {
                 StartCoroutine(enemy.StartCooldown()); //Starts enemy attack cooldown
-                //gameManager.player.playerHp -= enemy.atk;
+                player.TakeDamage(liveEnemies);
             }
         }
 
