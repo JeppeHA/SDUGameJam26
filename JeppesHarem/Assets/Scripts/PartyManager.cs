@@ -1,23 +1,65 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 
 public class PartyManager : MonoBehaviour
 {
-    public List<CreatureSO> team = new List<CreatureSO>();
+
+    private GameObject starterCreaturePrefab;
+    public CreatureSO starterCreatureData;
+    public static PartyManager Instance {  get; private set; }
+
+    private void Awake()
+    {
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
+    public List<CreatureInstance> team = new List<CreatureInstance>();
     public int teamCap = 3;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private PlayerSO player;
+
+
+    public void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void InitializeStarterCreature()
     {
-        
+        CreatureFactory creatureFactory = GetComponent<CreatureFactory>();
+        starterCreaturePrefab = creatureFactory.CreatureInstance(starterCreatureData);
+        AddCreature(starterCreaturePrefab.GetComponent<CreatureInstance>());
+        Debug.Log(starterCreaturePrefab.name);
     }
     
-    public void AddCreature(CreatureSO newCreature)
+    
+    public void PopulateTeam()
+    {
+        if (team.Count <= 0)
+        {
+            InitializeStarterCreature();
+        }
+        for (int i = 0; i < team.Count; i++)
+        {
+            if (team[i] == null)
+            {
+                Instantiate(team[i]);
+            }
+        }
+    }
+    
+    
+    
+
+    public void AddCreature(CreatureInstance newCreature)
     {
         if (team.Count >= teamCap)
         {
@@ -26,12 +68,20 @@ public class PartyManager : MonoBehaviour
         team.Add(newCreature);
     }
 
-    public void RemoveCreature(CreatureSO oldCreature)
+    public void RemoveCreature(CreatureInstance oldCreature)
     {
         if (team.Count <= 0)
         {
             return;
         }
         team.Remove(oldCreature);
+    }
+
+    public void PrintParty()
+    {
+        foreach (CreatureInstance creatureInstance in team)
+        {
+            Debug.Log(creatureInstance.name);
+        }
     }
 }

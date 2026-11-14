@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerSO : ScriptableObject
 {
     public float playerHp;
+    public int notes; // Income
     //public Instrument instrument;
-    
+
 }
