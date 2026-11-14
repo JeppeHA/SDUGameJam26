@@ -6,9 +6,14 @@ public class Menu : MonoBehaviour
 {
     [SerializeField] private string gameSceneName;
 
-    public void Play()
+    public void LoadToMap()
     {
-        SceneManager.LoadScene(gameSceneName);
+        SceneManager.LoadScene("Map");
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void Quit()
