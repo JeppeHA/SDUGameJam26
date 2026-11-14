@@ -7,6 +7,7 @@ public class CreatureInstance : MonoBehaviour
     
     private SpriteRenderer spriteRenderer;
 
+    public CreatureSO creature;
     public string name;
     public float hp;
     public float atkSpeed;
@@ -25,6 +26,7 @@ public class CreatureInstance : MonoBehaviour
 
     public void SetStats(CreatureSO creatureData)
     {
+        creature = creatureData;
         name = creatureData.name;
         hp = creatureData.hp;
         atk = creatureData.atk;

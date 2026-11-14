@@ -9,7 +9,7 @@ public class DragAndDrop : MonoBehaviour
     private float startXPos;
     private float startYPos;
 
-    private bool isDragging = false;
+    public bool isDragging = false;
 
     private void Start()
     {
@@ -27,7 +27,6 @@ public class DragAndDrop : MonoBehaviour
     private void OnMouseDown()
     {
         Vector3 mousePos = Input.mousePosition;
-        Debug.Log(mousePos);
 
         if (!myCam.orthographic)
         {
@@ -36,8 +35,8 @@ public class DragAndDrop : MonoBehaviour
 
         mousePos = myCam.ScreenToWorldPoint(mousePos);
 
-        startXPos = mousePos.x * 45 - transform.localPosition.x;
-        startYPos = mousePos.y * 45 - transform.localPosition.y;
+        startXPos = mousePos.x - transform.localPosition.x;
+        startYPos = mousePos.y - transform.localPosition.y;
 
         isDragging = true;
     }
@@ -58,6 +57,6 @@ public class DragAndDrop : MonoBehaviour
 
         mousePos = myCam.ScreenToWorldPoint(mousePos);
 
-        transform.localPosition = new Vector3(mousePos.x * 45 - startXPos, mousePos.y * 45 - startYPos, transform.localPosition.z);
+        transform.localPosition = new Vector3(mousePos.x - startXPos, mousePos.y - startYPos, transform.localPosition.z);
     }
 }
