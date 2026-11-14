@@ -3,8 +3,24 @@ using System.Collections.Generic;
 
 public class PartyManager : MonoBehaviour
 {
+    public static PartyManager Instance {  get; private set; }
+
+    private void Awake()
+    {
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
     public List<CreatureSO> team = new List<CreatureSO>();
     public int teamCap = 3;
+    private PlayerSO player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
