@@ -52,7 +52,7 @@ jobs:
       - name: Restore Library cache
         uses: actions/cache@v4
         with:
-          path: Library
+          path: JeppesHarem/Library
           key: Library-test-project-${{ matrix.testMode }}
           restore-keys: |
             Library-test-project-
@@ -63,6 +63,7 @@ jobs:
         id: testRunner
         with:
           testMode: ${{ matrix.testMode }}
+          projectPath: JeppesHarem
           checkName: ${{ matrix.testMode }} test results
           githubToken: ${{ secrets.GITHUB_TOKEN }}
 
@@ -101,7 +102,7 @@ jobs:
       - name: Restore Library cache
         uses: actions/cache@v4
         with:
-          path: Library
+          path: JeppesHarem/Library
           key: Library-build-WebGL
           restore-keys: |
             Library-build-
@@ -110,6 +111,7 @@ jobs:
       - uses: game-ci/unity-builder@v4
         with:
           targetPlatform: WebGL
+          projectPath: JeppesHarem
 
       - uses: actions/upload-artifact@v4
         with:
@@ -145,7 +147,7 @@ jobs:
       - name: Restore Library cache
         uses: actions/cache@v4
         with:
-          path: Library
+          path: JeppesHarem/Library
           key: Library-build-StandaloneWindows64
           restore-keys: |
             Library-build-
@@ -154,6 +156,7 @@ jobs:
       - uses: game-ci/unity-builder@v4
         with:
           targetPlatform: StandaloneWindows64
+          projectPath: JeppesHarem
 
       - uses: actions/upload-artifact@v4
         with:
@@ -189,7 +192,7 @@ jobs:
       - name: Restore Library cache
         uses: actions/cache@v4
         with:
-          path: Library
+          path: JeppesHarem/Library
           key: Library-build-StandaloneOSX
           restore-keys: |
             Library-build-
@@ -198,6 +201,7 @@ jobs:
       - uses: game-ci/unity-builder@v4
         with:
           targetPlatform: StandaloneOSX
+          projectPath: JeppesHarem
 
       - uses: actions/upload-artifact@v4
         with:
@@ -208,7 +212,7 @@ jobs:
     needs: buildWebGL
     name: Deploy to itch.io
     runs-on: ubuntu-latest
-    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/master'
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
     steps:
       - uses: actions/download-artifact@v4
         with:
