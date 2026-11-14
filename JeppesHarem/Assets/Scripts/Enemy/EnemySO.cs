@@ -9,12 +9,7 @@ public class EnemySO : ScriptableObject
     public float cooldown = 0f;
     public bool canAttack;
     
-    public IEnumerator StartCooldown()
-    {
-        canAttack = false;
-        yield return new WaitForSeconds(cooldown);
-        canAttack = true;
-    }
+    
 }
 
 

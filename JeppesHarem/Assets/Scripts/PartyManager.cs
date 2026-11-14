@@ -18,22 +18,11 @@ public class PartyManager : MonoBehaviour
         }
     }
 
-    public List<CreatureSO> team = new List<CreatureSO>();
+    public List<CreatureInstance> team = new List<CreatureInstance>();
     public int teamCap = 3;
     private PlayerSO player;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     
-    public void AddCreature(CreatureSO newCreature)
+    public void AddCreature(CreatureInstance newCreature)
     {
         if (team.Count >= teamCap)
         {
@@ -42,7 +31,7 @@ public class PartyManager : MonoBehaviour
         team.Add(newCreature);
     }
 
-    public void RemoveCreature(CreatureSO oldCreature)
+    public void RemoveCreature(CreatureInstance oldCreature)
     {
         if (team.Count <= 0)
         {

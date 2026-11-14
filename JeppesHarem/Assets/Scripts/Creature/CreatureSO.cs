@@ -5,22 +5,15 @@ using System.Collections;
 [CreateAssetMenu(fileName = "CreatureSO", menuName = "Scriptable Objects/Creature")]
 public class CreatureSO : ScriptableObject
 {
+    public string name;
     public float hp;
     public float atkSpeed;
     public float atk;
     public Sprite sprite;
-    private Typing _type;
+    public Typing _type;
     public Animator animator;
     public bool canAttack;
-    private float cooldown = 0f;
-
-
-    public IEnumerator StartCooldown()
-    {
-        canAttack = false;
-        yield return new WaitForSeconds(cooldown);
-        canAttack = true;
-    }
+    public float cooldown = 0f;
 
 
     public Typing Get()

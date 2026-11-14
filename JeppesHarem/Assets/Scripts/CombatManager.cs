@@ -29,52 +29,34 @@ public class CombatManager : MonoBehaviour
         partyManager = GameObject.Find("PartyManager").GetComponent<PartyManager>();
     }
 
-    private List<EnemySO> enemies = new List<EnemySO>();
-    private float enemyHP;
+    private List<EnemyInstance> enemies = new List<EnemyInstance>();
     // Call from GameManager (yet to be implemented)
-    public void PopulateCombat(List<EnemySO> enemies)
+    public void PopulateCombat(List<EnemyInstance> enemies)
     {
         this.enemies = enemies;
-        foreach (EnemySO enemy in enemies) 
-        {
-            enemyHP += enemy.hp;
-        }
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        foreach (CreatureSO creature in partyManager.team) 
+        foreach (CreatureInstance creature in partyManager.team) 
         { 
             if (creature.canAttack)
             {
-                CreatureAttack(creature);
+                creature.Attack(enemies);
             }
         }
 
-        foreach (EnemySO enemy in enemies)
+        foreach (EnemyInstance enemy in enemies)
         {
             if (enemy.canAttack) 
             {
-                EnemyDamage(enemy);
+                StartCoroutine(enemy.StartCooldown()); //Starts enemy attack cooldown
+                gameManager.player.playerHp -= enemy.atk;
             }
         }
 
-    }
-
-    public void CreatureAttack(CreatureSO creature)
-    {
-        enemyHP -= creature.atk;
-
-        StartCoroutine(creature.StartCooldown()); //Starts creature attack cooldown
-    }
-
-    public void EnemyDamage(EnemySO enemy)
-    {
-        gameManager.player.playerHp -= enemy.atk;
-
-        StartCoroutine(enemy.StartCooldown()); //Starts enemy attack cooldown
     }
 
     public void UseAbility(AbilitySO ability, EnemySO enemy)
