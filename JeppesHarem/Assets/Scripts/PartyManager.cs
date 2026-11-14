@@ -22,7 +22,7 @@ public class PartyManager : MonoBehaviour
         }
     }
 
-    public List<CreatureInstance> team = new List<CreatureInstance>();
+    public List<CreatureSO> team = new List<CreatureSO>();
     public int teamCap = 3;
     private PlayerSO player;
 
@@ -36,7 +36,7 @@ public class PartyManager : MonoBehaviour
     {
         CreatureFactory creatureFactory = GetComponent<CreatureFactory>();
         starterCreaturePrefab = creatureFactory.CreatureInstance(starterCreatureData);
-        AddCreature(starterCreaturePrefab.GetComponent<CreatureInstance>());
+        AddCreature(starterCreaturePrefab.GetComponent<CreatureInstance>().creature);
         Debug.Log(starterCreaturePrefab.name);
     }
     
@@ -59,7 +59,7 @@ public class PartyManager : MonoBehaviour
     
     
 
-    public void AddCreature(CreatureInstance newCreature)
+    public void AddCreature(CreatureSO newCreature)
     {
         if (team.Count >= teamCap)
         {
@@ -68,7 +68,7 @@ public class PartyManager : MonoBehaviour
         team.Add(newCreature);
     }
 
-    public void RemoveCreature(CreatureInstance oldCreature)
+    public void RemoveCreature(CreatureSO oldCreature)
     {
         if (team.Count <= 0)
         {
@@ -79,7 +79,7 @@ public class PartyManager : MonoBehaviour
 
     public void PrintParty()
     {
-        foreach (CreatureInstance creatureInstance in team)
+        foreach (CreatureSO creatureInstance in team)
         {
             Debug.Log(creatureInstance.name);
         }

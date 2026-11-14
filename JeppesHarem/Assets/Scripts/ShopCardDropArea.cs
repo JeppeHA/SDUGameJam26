@@ -25,7 +25,7 @@ public class ShopCardDropArea : MonoBehaviour
             creatureSO = (CreatureSO)card.GetComponent<CardController>().creatureToSpawn;
             spriteRenderer.sprite = creatureSO.sprite;
             GameObject creature = gameManager.GetComponent<CreatureFactory>().CreatureInstance(creatureSO);
-            gameManager.GetComponent<PartyManager>().AddCreature(creature.GetComponent<CreatureInstance>());
+            gameManager.GetComponent<PartyManager>().AddCreature(creature.GetComponent<CreatureInstance>().creature);
             Destroy(creature);
 
         }
