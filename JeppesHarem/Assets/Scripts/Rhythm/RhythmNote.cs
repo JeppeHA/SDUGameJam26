@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class RhythmNote : MonoBehaviour
 {
+    /*
+     * The node object class this class initialize an RhythmNote object
+     * and its reponsable for moving the object towards the key 
+     */
     [SerializeField] private float hitX = -7f;
 
     private double hitTime;
