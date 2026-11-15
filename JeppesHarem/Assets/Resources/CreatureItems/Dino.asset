@@ -19,5 +19,5 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: c06448c5565e34a19be38beefc58664b, type: 3}
   _type: 2
   animator: 3
-  canAttack: 0
+  canAttack: 1
   cooldown: 4

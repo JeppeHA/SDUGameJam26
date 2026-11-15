@@ -65,9 +65,9 @@ public class CombatManager : MonoBehaviour
         {
             if (enemiesPrefabs[i] == null || enemiesPositions[i] == null)
                 continue;
-           // GameObject go = Instantiate(enemiesPrefabs[i].gameObject, enemiesPositions[i].position, Quaternion.identity);
+            GameObject go = Instantiate(enemiesPrefabs[i].gameObject, enemiesPositions[i].position, Quaternion.identity);
             Debug.Log("livenemies add"); 
-            //liveEnemies.Add(go.GetComponent<EnemyInstance>());
+            liveEnemies.Add(go.GetComponent<EnemyInstance>());
         }
     }
 
@@ -146,7 +146,7 @@ public class CombatManager : MonoBehaviour
                 {
                     //Lose
                     Debug.Log("Lose");
-                    //SceneManager.LoadScene("Credits");
+                    SceneManager.LoadScene("Credits");
                 }
             }
         }

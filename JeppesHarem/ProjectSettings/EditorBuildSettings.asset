@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NotePixels.unity
     guid: c3dc161dd11e38c41b0542d4b64eb1b1
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 33000b42f89014d3099346a8311d4284
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a82c5638cd009b745933d3c2f0c2a872, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
