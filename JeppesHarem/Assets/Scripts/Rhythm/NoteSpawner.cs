@@ -12,9 +12,9 @@ public class NoteSpawner : MonoBehaviour
     [SerializeField] private float approachTime = 2f; // must be > 0
     private Canvas canvas;
     private GameObject nodeLayout;
-    
+
     private int nextNoteIndex;
-    
+
     private List<NoteData> sortedNotes;
 
     void Start()
@@ -35,7 +35,7 @@ public class NoteSpawner : MonoBehaviour
             NoteData note = sortedNotes[nextNoteIndex];
             // Converts beats to seconds
             double hitTime = note.beat * (60.0 / songChart.bpm);
-            
+
             // is the time remaining until the note must be hit
             // If the note is still more than approachTime seconds away, it’s too early to spawn, so stop
             if (hitTime - rhythmManager.SongTime() > approachTime) break;
@@ -49,12 +49,11 @@ public class NoteSpawner : MonoBehaviour
     {
         int lane = data.lane - 1;
         Vector3 pos = lanePositions[lane].position;
-        Debug.Log(pos);
+        //Debug.Log(pos);
         GameObject go = Instantiate(rhythmNotePrefab, new Vector3(pos.x, pos.y, transform.position.z),
             Quaternion.identity,nodeLayout.transform);
-        Debug.Log("X1: " + pos.x);
         RhythmNote note = go.GetComponent<RhythmNote>();
-        note.Initialize(rhythmManager, hitTime, pos.x , approachTime);
+        note.Initialize(rhythmManager, hitTime, 1000 , approachTime);
         laneControllers[lane].Register(note);
     }
 }

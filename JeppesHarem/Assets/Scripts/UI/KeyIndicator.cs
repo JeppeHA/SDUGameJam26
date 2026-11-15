@@ -1,61 +1,48 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class KeyIndicator : MonoBehaviour
 {
-    private TextMeshProUGUI textElement;
-    private string text = "";
     [SerializeField] private float popUpTime = 0.1f;
+    [SerializeField] private float visibleTime = 0.5f;
 
-    private void Start()
+    private TextMeshProUGUI textElement;
+    private Coroutine routine;
+
+    private void Awake()
     {
         textElement = GetComponent<TextMeshProUGUI>();
-        DisableKeyIndicator();
-    }
-
-    public void SetText(string text, Color color)
-    {
-        this.text = text;
-        textElement.text = text;
-        textElement.color = color;
-    }
-
-    public void EnableKeyIndicator()
-    {
-        DisableKeyIndicator();
-        gameObject.SetActive(true);
-        PopUp();
-    }
-
-    public void PopUp()
-    {
-        StartCoroutine(PopUpCoroutine());
-    }
-
-    private IEnumerator PopUpCoroutine()
-    {
-        float time = 0;
-
-        while (time < popUpTime)
-        {
-            float t = time / popUpTime;
-            float s = Mathf.Lerp(0, 1, t);
-            gameObject.transform.localScale = new Vector3(s, s, s);
-            time += Time.deltaTime;
-            
-            yield return null;
-        }
-    }
-
-    public void DisableKeyIndicator()
-    {
         gameObject.SetActive(false);
     }
 
+    public void Show(string text, Color color)
+    {
+        textElement.text = text;
+        textElement.color = color;
 
+        gameObject.SetActive(true);
+
+        // Cancel the previous pop-up
+        if (routine != null) StopCoroutine(routine);
+        routine = StartCoroutine(ShowRoutine());
+    }
+    
+
+    private IEnumerator ShowRoutine()
+    {
+        float time = 0f;
+        while (time < popUpTime)
+        {
+            float s = time / popUpTime;
+            transform.localScale = new Vector3(s, s, s);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        transform.localScale = Vector3.one;
+        
+        yield return new WaitForSeconds(visibleTime);
+        gameObject.SetActive(false);
+        routine = null;
+    }
 }
-
-

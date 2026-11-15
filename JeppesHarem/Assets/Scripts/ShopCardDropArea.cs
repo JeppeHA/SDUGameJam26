@@ -31,19 +31,25 @@ public class ShopCardDropArea : MonoBehaviour
             creatureSO = (CreatureSO)card.GetComponent<CardController>().creatureToSpawn;
             spriteRenderer.sprite = creatureSO.sprite;
             shadow.SetActive(true);
-            GameObject creature = gameManager.GetComponent<CreatureFactory>().CreatureInstance(creatureSO);
-            gameManager.GetComponent<PartyManager>().AddCreature(creature.GetComponent<CreatureInstance>().creature);
-            Destroy(creature);
+            gameManager.GetComponent<PartyManager>().AddCreature(creatureSO);
 
         }
         else if (shopManager.TryGetComponent(out AbilityShop abilityShop))
         {
+            if (abilitySO != null)
+            {
+                gameManager.GetComponent<AbilityManager>().RemoveAbility(abilitySO);
+            }
             abilitySO = (AbilitySO)card.GetComponent<CardController>().abilityToSpawn;
             spriteRenderer.sprite = abilitySO.sprite;
             shadow.SetActive(true);
-            //GameObject ability = gameManager.GetComponent<AbilityFactory>().AbilityInstance(abilitySO);
+            gameManager.GetComponent<AbilityManager>().AddAbility(abilitySO);
         }
-        Destroy(card.gameObject);
+
+        foreach (Object item in shopManager.GetComponent<Shop>().shopItems)
+        {
+            Destroy(item);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)

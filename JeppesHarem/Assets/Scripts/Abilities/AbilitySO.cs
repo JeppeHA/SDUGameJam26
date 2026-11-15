@@ -4,7 +4,6 @@ using System.Collections;
 [CreateAssetMenu(fileName = "AbilitySO", menuName = "Scriptable Objects/AbilitySO")]
 public class AbilitySO : ScriptableObject
 {
-    public float buffMultiplier;
     public float cooldown;
     public float duration;
     public bool canUse;
@@ -13,8 +12,8 @@ public class AbilitySO : ScriptableObject
     public string name;
     public string desc;
     public Sprite sprite;
-    public AbilityTargetType targetType;
     public float healValue;
+    public float buffMult;
     //public Soundtrack
 }
 
