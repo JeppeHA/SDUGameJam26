@@ -18,6 +18,6 @@ MonoBehaviour:
   atk: 0
   sprite: {fileID: 0}
   _type: 0
-  animator: 0
+  animator: 2
   canAttack: 0
   cooldown: 0
