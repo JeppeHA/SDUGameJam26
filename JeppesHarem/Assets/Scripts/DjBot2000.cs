@@ -22,35 +22,9 @@ public class DjBot2000 : MonoBehaviour
 
     void Start()
     {
-        trackList.Add(track0Clip);
-        trackList.Add(track1Clip);
-        trackList.Add(track2Clip);
-        trackList.Add(track3Clip);
-
         track0.clip = track0Clip;
-        track1.clip = track1Clip;
-        track0.Stop();
-        track1.Stop();
-        track0.PlayDelayed(8f);
-        track1.PlayDelayed(16f);
+        track0.Play();
     }
-    private void Update()
-    {
-        if (!track0.isPlaying)
-        {
-            randomInt = Random.Range(0, trackList.Count);
-            track0.clip = trackList[randomInt];
-            track0.PlayDelayed(8f);
-            //Aktiver Noder til om 8 sekunder
-
-        }
-        if (!track1.isPlaying)
-        {
-            randomInt = Random.Range(0, trackList.Count);
-            track1.clip = trackList[randomInt];
-            track1.PlayDelayed(8f);
-            //Aktiver Noder til om 8 sekunder
-        }
-    }
+    
 
 }
