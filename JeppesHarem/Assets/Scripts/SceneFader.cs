@@ -8,13 +8,15 @@ public class SceneFader : MonoBehaviour
     public Image image;
     public string sceneName;
     public float duration = 1;
+    public AudioSource audioSource;
     private void Start()
-    {
+    {   
         StartCoroutine(FadeOut());
     }
     
     public void FadeAndLoadScene()
     {
+        audioSource.Play();
         StartCoroutine(FadeIn());
     }
 

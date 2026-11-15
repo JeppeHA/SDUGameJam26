@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class CreatureInstance : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class CreatureInstance : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     public CreatureSO creature;
+    public CreatureInstance creatureInstance;
     public string name;
     public float hp;
     public float atkSpeed;
@@ -22,20 +24,23 @@ public class CreatureInstance : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprite;
+        animator = GetComponent<Animator>();
     }
 
     public void SetStats(CreatureSO creatureData)
     {
+        creatureInstance = GetComponent<CreatureInstance>();
         creature = creatureData;
         name = creatureData.name;
         hp = creatureData.hp;
         atk = creatureData.atk;
         atkSpeed = creatureData.atkSpeed;
         sprite = creatureData.sprite;
-        animator = creatureData.animator;
+        animator.SetInteger("Animal", creatureData.animator);
         canAttack = creatureData.canAttack;
         type = creatureData._type;
         cooldown = creatureData.cooldown;
+      
         
     }
 
@@ -48,8 +53,10 @@ public class CreatureInstance : MonoBehaviour
 
     public void Attack(List<EnemyInstance> enemies)
     {
+        animator.SetTrigger("Attack");
         StartCoroutine(StartCooldown());
         EnemySelection(enemies).health -= atk;
+
     }
 
     private EnemyInstance EnemySelection(List<EnemyInstance> enemies)
