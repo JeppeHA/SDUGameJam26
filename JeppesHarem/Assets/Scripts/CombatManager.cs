@@ -14,7 +14,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private List<Transform> enemiesPositions = new List<Transform>();
     public Transform playerPos;
 
-    [SerializeField] private List<CreatureInstance> instantiatedPartyMembers = new List<CreatureInstance>();
+    [SerializeField] public List<CreatureInstance> instantiatedPartyMembers = new List<CreatureInstance>();
 
     private void Awake()
     {
@@ -62,7 +62,7 @@ public class CombatManager : MonoBehaviour
 
         for (int i = 0; i < enemiesPrefabs.Count; i++)
         {
-            if(enemiesPrefabs[i] == null)
+            if (enemiesPrefabs[i] == null || enemiesPositions[i] == null)
                 continue;
             GameObject go = Instantiate(enemiesPrefabs[i].gameObject, enemiesPositions[i].position, Quaternion.identity);
             Debug.Log("livenemies add");
@@ -140,7 +140,6 @@ public class CombatManager : MonoBehaviour
             {
                 StartCoroutine(enemy.StartCooldown()); //Starts enemy attack cooldown
                 player.TakeDamage(enemy);
-                Debug.Log(player.playerHp);
                 if (player.playerHp < 0)
                 {
                     //Lose

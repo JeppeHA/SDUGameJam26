@@ -49,10 +49,10 @@ public class NoteSpawner : MonoBehaviour
     {
         int lane = data.lane - 1;
         Vector3 pos = lanePositions[lane].position;
-        Debug.Log(pos);
+        //Debug.Log(pos);
         GameObject go = Instantiate(rhythmNotePrefab, new Vector3(pos.x, pos.y, transform.position.z),
             Quaternion.identity,nodeLayout.transform);
-        Debug.Log("X1: " + pos.x);
+        //Debug.Log("X1: " + pos.x);
         RhythmNote note = go.GetComponent<RhythmNote>();
         note.Initialize(rhythmManager, hitTime, pos.x , approachTime);
         laneControllers[lane].Register(note);
