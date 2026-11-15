@@ -33,6 +33,9 @@ public class ShopManager : MonoBehaviour
             abilityManager = FindFirstObjectByType<GameManager>().gameObject.GetComponent<AbilityManager>();
             abilityShop.LoadShop("AbilityItems");
 
+            Destroy(slots[1]);
+            slots.RemoveAt(1);
+
             for (int i = 0; i < abilityManager.abilities.Count; i++)
             {
                 Debug.Log(i);
