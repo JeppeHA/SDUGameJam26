@@ -32,7 +32,6 @@ public class EnemyInstance : MonoBehaviour
     
     public IEnumerator StartCooldown()
     {
-        anim.SetTrigger("Attack");
         canAttack = false;
         yield return new WaitForSeconds(cooldown);
         canAttack = true;
