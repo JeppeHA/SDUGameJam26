@@ -16,7 +16,18 @@ public class NoteSpawner : MonoBehaviour
     private int nextNoteIndex;
 
     private List<NoteData> sortedNotes;
-
+    private void Awake()
+    {
+        nodeLayout = GameObject.FindGameObjectWithTag("NodeLayout");
+        for (int i = 0; i < 4; i++)
+        {
+            laneControllers[i] = nodeLayout.transform.GetChild(i).gameObject.GetComponent<ButtonController>();
+        }
+        for (int i = 4; i < 8; i++)
+        {
+            lanePositions[i-4] = nodeLayout.transform.GetChild(i).gameObject.transform;
+        }
+    }
     void Start()
     {
         canvas = GameObject.FindFirstObjectByType<Canvas>();
@@ -25,6 +36,8 @@ public class NoteSpawner : MonoBehaviour
         sortedNotes = new List<NoteData>(songChart.notes);
         sortedNotes.Sort((a, b) => a.beat.CompareTo(b.beat));
         rhythmManager = GameObject.FindFirstObjectByType<RhythmManager>();
+
+
     }
    
     void Update()
