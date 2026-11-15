@@ -37,42 +37,5 @@ public class PlayerInputHandler : MonoBehaviour
         creatureInstance = FindFirstObjectByType<CreatureInstance>();
     }
 
-    public void AbilityInput()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            switch (playerInstance.ability1.targetType)
-            {
-                case AbilityTargetType.Player:
-                    playerInstance.HealPlayer(playerInstance.ability1);
-                    break;
-                case AbilityTargetType.Creature:
-                    //Logic
-                    break;
-                case AbilityTargetType.Enemy:
-                    //logic for applying dmg to enemy if damaging ability type
-                    break;
-                default:
-                    break;
-            }
-        }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            switch (playerInstance.ability2.targetType)
-            {
-                case AbilityTargetType.Player:
-                    playerInstance.HealPlayer(playerInstance.ability2);
-                    break;
-                case AbilityTargetType.Creature:
-                    //logic
-                    break;
-                case AbilityTargetType.Enemy:
-                    //logic for applying dmg to enemy if damaging ability type
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
 }
