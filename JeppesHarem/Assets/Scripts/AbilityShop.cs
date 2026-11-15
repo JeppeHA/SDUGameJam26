@@ -8,6 +8,6 @@ public class AbilityShop : Shop
         AbilitySO itemInfo = (AbilitySO)allShopItems[Random.Range(0, allShopItems.Length)];
         shopItems.Add(itemInfo);
         GameObject shopItem = GameObject.Instantiate(cardPrefab, spawnPos[shopItems.Count - 1].transform.localPosition, Quaternion.identity);
-        shopItem.GetComponent<CardController>().infoDump(itemInfo.name, itemInfo.affinity.ToString(), itemInfo.desc, itemInfo.sprite, spawnPos[shopItems.Count - 1].transform.localPosition, itemInfo);
+        shopItem.GetComponent<CardController>().infoDump(itemInfo.name, itemInfo.abilityType.ToString(), itemInfo.desc, itemInfo.sprite, spawnPos[shopItems.Count - 1].transform.localPosition, itemInfo);
     }
 }
