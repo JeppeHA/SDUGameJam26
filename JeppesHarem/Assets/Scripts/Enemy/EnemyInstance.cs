@@ -11,6 +11,7 @@ public class EnemyInstance : MonoBehaviour
     public float cooldown = 0f;
     public bool canAttack;
     private SpriteRenderer spriteRenderer;
+    public Animator anim;
 
     private void Start()
     {
@@ -26,10 +27,12 @@ public class EnemyInstance : MonoBehaviour
         health = enemyData.hp;
         cooldown = enemyData.cooldown;
         canAttack = enemyData.canAttack;
+        anim = enemyData.anim;
     }
     
     public IEnumerator StartCooldown()
     {
+        anim.SetTrigger("Attack");
         canAttack = false;
         yield return new WaitForSeconds(cooldown);
         canAttack = true;

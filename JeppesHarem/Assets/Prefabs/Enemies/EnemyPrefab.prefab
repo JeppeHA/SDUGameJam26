@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6012782018961739570}
   - component: {fileID: 7677014884801338191}
   - component: {fileID: -4708032928534752833}
+  - component: {fileID: 5297174114562948965}
   m_Layer: 5
   m_Name: EnemyPrefab
   m_TagString: Untagged
@@ -93,3 +94,26 @@ MonoBehaviour:
   health: 0
   cooldown: 0
   canAttack: 0
+  anim: {fileID: 5297174114562948965}
+--- !u!95 &5297174114562948965
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4044062633051352203}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d4cdb4ad8d06488d8244701faaff1d8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
