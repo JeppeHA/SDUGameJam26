@@ -6,8 +6,6 @@ using System.Collections;
 public class CreatureSO : ScriptableObject
 {
     public string name;
-    public float hp;
-    public float atkSpeed;
     public float atk;
     public Sprite sprite;
     public Typing _type;

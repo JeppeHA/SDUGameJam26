@@ -9,6 +9,6 @@ public class CreatureShop : Shop
         shopItems.Add(itemInfo);
         Debug.Log(cardPrefab.gameObject.name);
         GameObject shopItem = GameObject.Instantiate(cardPrefab, spawnPos[shopItems.Count - 1].transform.localPosition, Quaternion.identity);
-        shopItem.GetComponent<CardController>().infoDump(itemInfo.name, itemInfo._type.ToString(), $"speed: {itemInfo.atkSpeed}\n dmg: {itemInfo.atk}\n hp: {itemInfo.hp}", itemInfo.sprite, spawnPos[shopItems.Count - 1].transform.localPosition, itemInfo);
+        shopItem.GetComponent<CardController>().infoDump(itemInfo.name, itemInfo._type.ToString(), $"speed: {itemInfo.cooldown}\n dmg: {itemInfo.atk}\n ", itemInfo.sprite, spawnPos[shopItems.Count - 1].transform.localPosition, itemInfo);
     }
 }
