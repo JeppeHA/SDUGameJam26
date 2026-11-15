@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d90fdae9ae56412e862301a07d9330d, type: 3}
-  m_Name: Moth
+  m_Name: Moth 3
   m_EditorClassIdentifier: Assembly-CSharp::CreatureSO
-  name: 
-  hp: 0
-  atkSpeed: 0
-  atk: 0
-  sprite: {fileID: 0}
-  _type: 0
-  animator: {fileID: 0}
-  canAttack: 0
-  cooldown: 0
+  name: Moth
+  atk: 4.5
+  sprite: {fileID: 21300000, guid: b476145352b324f92ad559d545aa47dd, type: 3}
+  _type: 2
+  animator: 1
+  canAttack: 1
+  cooldown: 2
