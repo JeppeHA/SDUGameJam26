@@ -13,8 +13,8 @@ public class ButtonController : MonoBehaviour
     [SerializeField] private double perfectWindow = 0.05;
     [SerializeField] private double goodWindow = 0.10;
     [SerializeField] private double missWindow = 0.15;
-    [SerializeField] private float perfectModifier = 1f;
-    [SerializeField] private float goodModifier = 0.50f;
+    public float perfectModifier = 1f;
+    public float goodModifier = 0.50f;
     [SerializeField] private float missModifier = -0.1f;
 
 
