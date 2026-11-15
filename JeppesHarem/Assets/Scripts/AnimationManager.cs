@@ -8,7 +8,7 @@ public class AnimationManager : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        animator.SetInteger("Animal", 3);
+        animator.SetInteger("Animal", 0);
     }
 
    
