@@ -2023,7 +2023,7 @@ MonoBehaviour:
   abilityImages:
   - {fileID: 1149525521}
   - {fileID: 1533312301}
-  creatureInstance: {fileID: 0}
+  creatureInstances: []
   btnController: {fileID: 0}
   sliders: []
 --- !u!1 &964110540
