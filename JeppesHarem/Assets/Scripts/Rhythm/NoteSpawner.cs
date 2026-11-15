@@ -38,7 +38,7 @@ public class NoteSpawner : MonoBehaviour
             
             // is the time remaining until the note must be hit
             // If the note is still more than approachTime seconds away, it’s too early to spawn, so stop
-            if (hitTime - rhythmManager.songTime() > approachTime) break;
+            if (hitTime - rhythmManager.SongTime() > approachTime) break;
 
             SpawnNote(note, hitTime);
             nextNoteIndex++;

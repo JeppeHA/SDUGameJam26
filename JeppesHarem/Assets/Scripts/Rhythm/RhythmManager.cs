@@ -15,7 +15,7 @@ public class RhythmManager : MonoBehaviour
         audioSource.PlayScheduled(songStartTime);
     }
 
-    public double songTime()
+    public double SongTime()
     {
         return AudioSettings.dspTime - songStartTime;
     }

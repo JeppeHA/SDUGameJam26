@@ -4,32 +4,25 @@ using System.Collections;
 [CreateAssetMenu(fileName = "AbilitySO", menuName = "Scriptable Objects/AbilitySO")]
 public class AbilitySO : ScriptableObject
 {
-    public float damage;
-    public float cost;
+    public float buffMultiplier;
     public float cooldown;
+    public float duration;
     public bool canUse;
-    public AffinityType affinity;
+    public bool active;
+    public AbilityType abilityType;
+    public string name;
     public string desc;
     public Sprite sprite;
     public AbilityTargetType targetType;
     public float healValue;
     //public Soundtrack
-    
-    public IEnumerator StartCooldown()
-    {
-        canUse = false;
-        yield return new WaitForSeconds(cooldown);
-        canUse = true;
-    }
 }
 
-public enum AffinityType
+public enum AbilityType
 {
-    None,
-    Water,
-    Fire,
-    Earth,
-    Wind
+    Heal,
+    AttackBuff,
+    AttackSpeedBuff,
 };
 
 public enum AbilityTargetType

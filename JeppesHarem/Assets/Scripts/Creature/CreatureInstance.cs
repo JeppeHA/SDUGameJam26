@@ -9,6 +9,7 @@ public class CreatureInstance : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     public CreatureSO creature;
+    public CreatureInstance creatureInstance;
     public string name;
     public float hp;
     public float atkSpeed;
@@ -23,11 +24,12 @@ public class CreatureInstance : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprite;
-        animator = GetComponent<Animator>();
     }
 
     public void SetStats(CreatureSO creatureData)
     {
+        animator = GetComponent<Animator>();
+        creatureInstance = GetComponent<CreatureInstance>();
         creature = creatureData;
         name = creatureData.name;
         hp = creatureData.hp;
@@ -54,6 +56,7 @@ public class CreatureInstance : MonoBehaviour
         animator.SetTrigger("Attack");
         StartCoroutine(StartCooldown());
         EnemySelection(enemies).health -= atk;
+
     }
 
     private EnemyInstance EnemySelection(List<EnemyInstance> enemies)
