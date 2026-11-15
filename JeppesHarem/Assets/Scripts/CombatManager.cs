@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class CombatManager : MonoBehaviour
 {
@@ -129,6 +130,7 @@ public class CombatManager : MonoBehaviour
                     {
                         //Win
                         Debug.Log("Win!");
+                        SceneManager.LoadScene("Map");
                     }
                 }
             }
@@ -144,6 +146,7 @@ public class CombatManager : MonoBehaviour
                 {
                     //Lose
                     Debug.Log("Lose");
+                    //SceneManager.LoadScene("Credits");
                 }
             }
         }
