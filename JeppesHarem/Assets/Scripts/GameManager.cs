@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+        DontDestroyOnLoad(this);
     }
 
     public PlayerSO player;
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = Resources.Load<PlayerSO>("Assets/ScriptableObjects/Player.asset");
+
     }
 
     // Update is called once per frame

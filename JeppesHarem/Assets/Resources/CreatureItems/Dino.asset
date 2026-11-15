@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d90fdae9ae56412e862301a07d9330d, type: 3}
-  m_Name: TestCreature 1
+  m_Name: Dino
   m_EditorClassIdentifier: Assembly-CSharp::CreatureSO
-  name: Test Creature 1
-  hp: 10
-  atkSpeed: 10
-  atk: 10
-  sprite: {fileID: 21300000, guid: 0ccc508108fa6ed4fa11b4a467d7f609, type: 3}
-  _type: 1
-  animator: {fileID: 0}
-  canAttack: 0
-  cooldown: 1
+  name: Dino
+  hp: 3
+  atkSpeed: 34
+  atk: 2
+  sprite: {fileID: 21300000, guid: c06448c5565e34a19be38beefc58664b, type: 3}
+  _type: 2
+  animator: 3
+  canAttack: 1
+  cooldown: 4

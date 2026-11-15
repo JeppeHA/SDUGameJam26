@@ -52,6 +52,7 @@ public class CreatureInstance : MonoBehaviour
         animator.SetTrigger("Attack");
         StartCoroutine(StartCooldown());
         EnemySelection(enemies).health -= atk;
+        Debug.Log($"attacked for {atk}");
 
     }
 
@@ -68,6 +69,7 @@ public class CreatureInstance : MonoBehaviour
                 lowestHealth = enemy.health;
             }
         }
+        Debug.Log(currentTarget.name);
         return currentTarget;
     }
     

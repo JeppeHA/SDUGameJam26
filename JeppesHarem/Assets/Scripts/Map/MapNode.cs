@@ -40,7 +40,7 @@ public enum ShopType
 
         if (nodeType == NodeType.Combat)
         {
-            sceneFader.sceneName = "GameplayCombat";
+            sceneFader.sceneName = "NotePixels";
         }
         else if (nodeType == NodeType.Shop)
         {
