@@ -52,8 +52,10 @@ public enum ShopType
     public void CompleteNode()
     {
         GetComponent<UnityEngine.UI.Button>().interactable = false;
-        spriteChanger.SpriteChange();
-
+        if (nodeType == NodeType.Combat)
+        {
+            spriteChanger.SpriteChange();
+        }
         foreach (MapNode node in connectedNodes)
         {
             node.GetComponent<UnityEngine.UI.Button>().interactable = true;
