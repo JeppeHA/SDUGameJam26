@@ -16,7 +16,6 @@ public class AbilityInstance : MonoBehaviour
     public float cooldown;
     public float duration;
     public AbilityType abilityType;
-    public AbilityTargetType targetType;
     public string description;
     public string name;
     public Sprite sprite;
@@ -42,7 +41,6 @@ public class AbilityInstance : MonoBehaviour
         healValue = abilityData.healValue;
         cooldown = abilityData.cooldown;
         abilityType = abilityData.abilityType;
-        targetType = abilityData.targetType;
         description = abilityData.desc;
         name = abilityData.name;
         sprite = abilityData.sprite;
@@ -73,28 +71,32 @@ public class AbilityInstance : MonoBehaviour
         {
             case AbilityType.AttackBuff:
                 float orgAtk = creatureInstance.atk;
+                float buffedAtk = orgAtk * buffMult;
                 while (active)
                 {
-                    creatureInstance.atk = creatureInstance.atk * buffMult;
+                    creatureInstance.atk = buffedAtk;
                 }
                 creatureInstance.atk = orgAtk;
                 break;
             case  AbilityType.Heal:
                 float tmpPerfect = btnController.perfectModifier;
                 float tmpGood = btnController.goodModifier;
+                float buffedPerfectVibes = tmpPerfect * buffMult;
+                float buffedGoodVibes = tmpGood * buffMult;
                 while (active)
                 {
-                    btnController.perfectModifier = btnController.perfectModifier * buffMult;
-                    btnController.goodModifier = btnController.goodModifier * buffMult;
+                    btnController.perfectModifier = buffedPerfectVibes;
+                    btnController.goodModifier = buffedGoodVibes;
                 }
                 btnController.perfectModifier = tmpPerfect;
                 btnController.goodModifier = tmpGood;
                 break;
             case AbilityType.AttackSpeedBuff:
                 float orgAtkSpd = creatureInstance.atkSpeed;
+                float buffedAtkSpeed = orgAtkSpd * buffMult;
                 while (active)
                 {
-                    creatureInstance.atkSpeed = creatureInstance.atkSpeed * buffMult;
+                    creatureInstance.atkSpeed = buffedAtkSpeed;
                 }
                 creatureInstance.atkSpeed = orgAtkSpd;
                 break;

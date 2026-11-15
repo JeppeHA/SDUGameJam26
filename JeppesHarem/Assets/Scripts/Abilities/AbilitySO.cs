@@ -13,7 +13,6 @@ public class AbilitySO : ScriptableObject
     public string name;
     public string desc;
     public Sprite sprite;
-    public AbilityTargetType targetType;
     public float healValue;
     //public Soundtrack
 }
