@@ -11,8 +11,6 @@ public class CreatureInstance : MonoBehaviour
     public CreatureSO creature;
     public CreatureInstance creatureInstance;
     public string name;
-    public float hp;
-    public float atkSpeed;
     public float atk;
     public Sprite sprite;
     private Typing type;
@@ -32,9 +30,7 @@ public class CreatureInstance : MonoBehaviour
         creatureInstance = GetComponent<CreatureInstance>();
         creature = creatureData;
         name = creatureData.name;
-        hp = creatureData.hp;
         atk = creatureData.atk;
-        atkSpeed = creatureData.atkSpeed;
         sprite = creatureData.sprite;
         animator.SetInteger("Animal", creatureData.animator);
         canAttack = creatureData.canAttack;

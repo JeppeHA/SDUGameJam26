@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d90fdae9ae56412e862301a07d9330d, type: 3}
-  m_Name: Moth
+  m_Name: Pterodactyl 4
   m_EditorClassIdentifier: Assembly-CSharp::CreatureSO
-  name: Moth
-  hp: 10
-  atkSpeed: 3
+  name: Pterodactyl
   atk: 1
-  sprite: {fileID: 21300000, guid: b476145352b324f92ad559d545aa47dd, type: 3}
-  _type: 0
-  animator: 0
+  sprite: {fileID: 21300000, guid: f89b6e4212b0a2d4085e17c4d2a109f1, type: 3}
+  _type: 1
+  animator: 6
   canAttack: 1
-  cooldown: 5
+  cooldown: 1

@@ -22,6 +22,7 @@ public enum ShopType
     public List<MapNode> connectedNodes = new List<MapNode>();
     public static int completedNodeRank = -1;
     public SceneFader sceneFader;
+    public SpriteChanger spriteChanger;
     void Start()
     {
         if (rank == completedNodeRank)
@@ -51,6 +52,7 @@ public enum ShopType
     public void CompleteNode()
     {
         GetComponent<UnityEngine.UI.Button>().interactable = false;
+        spriteChanger.SpriteChange();
 
         foreach (MapNode node in connectedNodes)
         {
