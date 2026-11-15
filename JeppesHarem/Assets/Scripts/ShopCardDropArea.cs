@@ -22,15 +22,6 @@ public class ShopCardDropArea : MonoBehaviour
         shadow = transform.GetChild(1).gameObject;
 
         shopManager = FindFirstObjectByType<ShopManager>();
-
-        if (shopManager.TryGetComponent(out CreatureShop creatureShop))
-        {
-            for (int i = 0; i < partyManager.team.Count; i++)
-            {   
-                spriteRenderer.sprite = partyManager.team[i].sprite;
-                shadow.SetActive(true);
-            }
-        }
     }
 
     public void OnCardDrop(GameObject card)
@@ -61,9 +52,9 @@ public class ShopCardDropArea : MonoBehaviour
             abilityManager.AddAbility(abilitySO);
         }
 
-        foreach (Object item in shopManager.GetComponent<Shop>().shopItems)
+        foreach (GameObject item in GameObject.FindGameObjectsWithTag("Card"))
         {
-            DestroyImmediate(item, true);
+            Destroy(item);
         }
     }
 
