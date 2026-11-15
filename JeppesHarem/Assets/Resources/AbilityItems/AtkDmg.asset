@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a0a233b69f444f249c514ae6c757b11, type: 3}
-  m_Name: TestAbility 2
+  m_Name: AtkDmg
   m_EditorClassIdentifier: Assembly-CSharp::AbilitySO
-  cooldown: 2
-  duration: 1
+  cooldown: 20
+  duration: 10
   canUse: 0
   active: 0
-  abilityType: 2
-  name: 
-  desc: 
-  sprite: {fileID: 21300000, guid: 4efd578e58041f145b1e31cb04143a07, type: 3}
+  abilityType: 1
+  name: Attack Damage
+  desc: Creatures deal more dmg 1.5x
+  sprite: {fileID: 0}
   healValue: 0
-  buffMult: 5
+  buffMult: 1.5

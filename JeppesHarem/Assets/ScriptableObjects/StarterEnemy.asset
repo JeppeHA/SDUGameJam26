@@ -16,4 +16,4 @@ MonoBehaviour:
   hp: 200
   cooldown: 5
   canAttack: 1
-  sprite: {fileID: 21300000, guid: 0c373058cd1ceda4ab1b5a3ca0a0d403, type: 3}
+  sprite: {fileID: 21300000, guid: 6ed079b5bcb2730458f58a0bd235e4fa, type: 3}

@@ -9,46 +9,61 @@ public class ShopCardDropArea : MonoBehaviour
     private GameObject shadow;
     private ShopManager shopManager;
     private GameObject gameManager;
+    private PartyManager partyManager;
+    private AbilityManager abilityManager;
 
     private void Start()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameController");
+        gameManager = GameObject.FindFirstObjectByType<GameManager>().gameObject;
+        partyManager = gameManager.GetComponent<PartyManager>();
+        abilityManager = gameManager.GetComponent<AbilityManager>();
+
+        spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        shadow = transform.GetChild(1).gameObject;
+
+        shopManager = FindFirstObjectByType<ShopManager>();
+
+        if (shopManager.TryGetComponent(out CreatureShop creatureShop))
+        {
+            for (int i = 0; i < partyManager.team.Count; i++)
+            {   
+                spriteRenderer.sprite = partyManager.team[i].sprite;
+                shadow.SetActive(true);
+            }
+        }
     }
 
     public void OnCardDrop(GameObject card)
     {
         Debug.Log("test");
-        spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
-        shadow = transform.GetChild(1).gameObject;
 
-        shopManager = FindFirstObjectByType<ShopManager>();
         if (shopManager.TryGetComponent(out CreatureShop creatureShop))
         {
             if (creatureSO != null) 
             {
-                gameManager.GetComponent<PartyManager>().RemoveCreature(creatureSO);
+                partyManager.RemoveCreature(creatureSO);
             }
             creatureSO = (CreatureSO)card.GetComponent<CardController>().creatureToSpawn;
             spriteRenderer.sprite = creatureSO.sprite;
             shadow.SetActive(true);
-            gameManager.GetComponent<PartyManager>().AddCreature(creatureSO);
+            partyManager.AddCreature(creatureSO);
 
         }
         else if (shopManager.TryGetComponent(out AbilityShop abilityShop))
         {
             if (abilitySO != null)
             {
-                gameManager.GetComponent<AbilityManager>().RemoveAbility(abilitySO);
+                abilityManager.RemoveAbility(abilitySO);
             }
             abilitySO = (AbilitySO)card.GetComponent<CardController>().abilityToSpawn;
             spriteRenderer.sprite = abilitySO.sprite;
             shadow.SetActive(true);
-            gameManager.GetComponent<AbilityManager>().AddAbility(abilitySO);
+            abilityManager.AddAbility(abilitySO);
         }
 
         foreach (Object item in shopManager.GetComponent<Shop>().shopItems)
         {
-            Destroy(item);
+            DestroyImmediate(item, true);
         }
     }
 
