@@ -75,6 +75,7 @@ public class ButtonController : MonoBehaviour
             Debug.Log($"Good ({diff:F3})");
             indicator.SetText("Bad!", Color.red);
             indicator.EnableKeyIndicator();
+            player.playerHp += missModifier;
         }
 
         StartCoroutine(HideIndicator());
