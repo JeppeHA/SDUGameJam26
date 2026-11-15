@@ -56,9 +56,6 @@ public class PartyManager : MonoBehaviour
         }
     }
     
-    
-    
-
     public void AddCreature(CreatureSO newCreature)
     {
         Debug.Log("populate team");

@@ -10,10 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a0a233b69f444f249c514ae6c757b11, type: 3}
-  m_Name: TestAbility 3
+  m_Name: Heal
   m_EditorClassIdentifier: Assembly-CSharp::AbilitySO
-  damage: 23
-  cost: 45
-  cooldown: 21
+  cooldown: 15
+  duration: 2
   canUse: 0
-  affinity: 3
+  active: 0
+  abilityType: 0
+  name: Vibes
+  desc: Notes vibe harder 3x
+  sprite: {fileID: 0}
+  healValue: 0
+  buffMult: 3
