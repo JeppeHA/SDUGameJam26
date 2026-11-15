@@ -13,9 +13,18 @@ MonoBehaviour:
   m_Name: Moth
   m_EditorClassIdentifier: Assembly-CSharp::CreatureSO
   name: Moth
+<<<<<<< HEAD:JeppesHarem/Assets/Resources/CreatureItems/CreatureS/Moth/Moth.asset
   atk: 5
   sprite: {fileID: 21300000, guid: b476145352b324f92ad559d545aa47dd, type: 3}
   _type: 2
   animator: 1
+=======
+  hp: 10
+  atkSpeed: 3
+  atk: 1
+  sprite: {fileID: 21300000, guid: b476145352b324f92ad559d545aa47dd, type: 3}
+  _type: 0
+  animator: 0
+>>>>>>> 4de83c46c6c57cad25517a0f83c87bc30ccee56a:JeppesHarem/Assets/ScriptableObjects/Moth.asset
   canAttack: 1
   cooldown: 5
