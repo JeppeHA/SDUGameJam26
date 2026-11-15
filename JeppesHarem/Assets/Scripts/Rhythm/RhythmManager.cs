@@ -18,13 +18,12 @@ public class RhythmManager : MonoBehaviour
         backingTrackSource.clip = backingTrack;
         backingTrackSource.Play();
         StartCoroutine(StopBackingTrack());
-        notespawner = Instantiate(noteSpawnerPrefab, transform.position, Quaternion.identity);
+        notespawner = GetComponent<NoteSpawner>();
         audioSource.clip = audioClip;
         songStartTime = AudioSettings.dspTime + 8;
         audioSource.PlayScheduled(songStartTime);
-        StartCoroutine(Replay((float)(AudioSettings.dspTime + 40)));
-        StartCoroutine(Replay((float)(AudioSettings.dspTime + 72)));
-        StartCoroutine(Replay((float)(AudioSettings.dspTime + 104)));
+        
+        
     }
     IEnumerator StopBackingTrack()
     {
@@ -32,12 +31,7 @@ public class RhythmManager : MonoBehaviour
         backingTrackSource.Stop();
         //audioSource.Play();
     }
-    IEnumerator Replay(float delay){
-        yield return new WaitForSeconds(delay);
-        Destroy(notespawner.gameObject);
-        notespawner = Instantiate(noteSpawnerPrefab, transform.position, Quaternion.identity);
-        audioSource.Play();
-    }
+    
 
     public double SongTime()
     {
