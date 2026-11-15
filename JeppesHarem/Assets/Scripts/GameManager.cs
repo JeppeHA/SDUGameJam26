@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private int combat = 1;
     public static GameManager Instance { get; private set; }
 
     private void Awake()
@@ -24,7 +25,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
-    }
+    }   
 
     // Update is called once per frame
     void Update()

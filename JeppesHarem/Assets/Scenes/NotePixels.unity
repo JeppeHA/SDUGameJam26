@@ -926,9 +926,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   liveEnemies: []
-  enemiesPrefabs:
+  enemiesPrefabs1:
   - {fileID: 2388335575016197425, guid: ec4d74c2c0826d440ba5da87ef0c8eeb, type: 3}
   - {fileID: 2388335575016197425, guid: 9a4b6b7c27568f14fa649133c193b079, type: 3}
+  enemiesPrefabs2:
+  - {fileID: 4044062633051352203, guid: 486f12d421c02334e8ac194a63f5f7a0, type: 3}
+  - {fileID: 4044062633051352203, guid: 9e2ceb5147b8f584280d08e3cdcc1f91, type: 3}
+  enemiesPrefabs3:
+  - {fileID: 4044062633051352203, guid: c69bc5e3ed9c7ea4fb44a29d447f786a, type: 3}
+  - {fileID: 4044062633051352203, guid: c69bc5e3ed9c7ea4fb44a29d447f786a, type: 3}
 --- !u!4 &277251171
 Transform:
   m_ObjectHideFlags: 0

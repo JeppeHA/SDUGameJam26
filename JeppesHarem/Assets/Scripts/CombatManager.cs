@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class CombatManager : MonoBehaviour
 {
+    private int combatCount = 1;
     public static CombatManager Instance { get; private set; }
     [SerializeField]
     private List<Transform> creaturePositions = new List<Transform>();
@@ -54,18 +55,30 @@ public class CombatManager : MonoBehaviour
 
     [SerializeField]
     private List<EnemyInstance> liveEnemies = new List<EnemyInstance>();
+    
+    private List<GameObject> currentPrefabs = new List<GameObject>();
     [SerializeField]
-    private List<GameObject> enemiesPrefabs = new List<GameObject>();
+    private List<GameObject> enemiesPrefabs1 = new List<GameObject>();
+    [SerializeField]
+    private List<GameObject> enemiesPrefabs2 = new List<GameObject>();
+    [SerializeField]
+    private List<GameObject> enemiesPrefabs3 = new List<GameObject>();
+    
+
+    public void SetEnemiesPrefabs(List<GameObject> enemiesPrefabs)
+    {
+        this.currentPrefabs = enemiesPrefabs;
+    }
     
 
     public void SpawnEnemies()
     {
 
-        for (int i = 0; i < enemiesPrefabs.Count; i++)
+        for (int i = 0; i < currentPrefabs.Count; i++)
         {
-            if (enemiesPrefabs[i] == null || enemiesPositions[i] == null)
+            if (currentPrefabs[i] == null || enemiesPositions[i] == null)
                 continue;
-            GameObject go = Instantiate(enemiesPrefabs[i].gameObject, enemiesPositions[i].position, Quaternion.identity);
+            GameObject go = Instantiate(currentPrefabs[i].gameObject, enemiesPositions[i].position, Quaternion.identity);
             Debug.Log("livenemies add"); 
             liveEnemies.Add(go.GetComponent<EnemyInstance>());
         }
@@ -82,8 +95,28 @@ public class CombatManager : MonoBehaviour
         if (partyManager.team.Count == 0)
             return;
         SetPositions();
+        SetEnemies();
         SpawnEnemies();
         //SpawnPlayer();
+    }
+
+    private void SetEnemies()
+    {
+        switch (combatCount)
+        {
+            case 1:
+                currentPrefabs = enemiesPrefabs1;
+                break;
+            case 2:
+                currentPrefabs = enemiesPrefabs2;
+                break;
+            case 3:
+                currentPrefabs = enemiesPrefabs3;
+                break;
+            default:
+                currentPrefabs = enemiesPrefabs1;
+                break;
+        }
     }
     
     private void SetPositions()
@@ -131,6 +164,7 @@ public class CombatManager : MonoBehaviour
                         //Win
                         Debug.Log("Win!");
                         SceneManager.LoadScene("Map");
+                        combatCount++;
                     }
                 }
             }
