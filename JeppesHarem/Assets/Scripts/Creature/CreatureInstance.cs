@@ -18,7 +18,7 @@ public class CreatureInstance : MonoBehaviour
     private Typing type;
     public Animator animator;
     public bool canAttack;
-    private float cooldown = 0f;
+    public float cooldown = 0f;
 
     void Start()
     {

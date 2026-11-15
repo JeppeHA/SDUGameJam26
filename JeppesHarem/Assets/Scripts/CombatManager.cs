@@ -31,6 +31,7 @@ public class CombatManager : MonoBehaviour
 
     private GameManager gameManager;
     private PartyManager partyManager;
+    private AbilityManager abilityManager;
     [SerializeField] private PlayerInstance player;
 
     public UnityEvent combatInitiated;

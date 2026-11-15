@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0a233b69f444f249c514ae6c757b11, type: 3}
   m_Name: TestAbility 2
   m_EditorClassIdentifier: Assembly-CSharp::AbilitySO
-  damage: 4
-  cost: 45
-  cooldown: 23
+  cooldown: 2
+  duration: 1
   canUse: 0
-  affinity: 2
+  active: 0
+  abilityType: 2
+  name: 
+  desc: 
+  sprite: {fileID: 21300000, guid: 4efd578e58041f145b1e31cb04143a07, type: 3}
+  healValue: 0
+  buffMult: 5
