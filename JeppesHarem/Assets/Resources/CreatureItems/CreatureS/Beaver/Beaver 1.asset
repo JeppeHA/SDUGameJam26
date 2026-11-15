@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Beaver 1
   m_EditorClassIdentifier: Assembly-CSharp::CreatureSO
   name: Beaver
-  atk: 0.2
+  atk: 1.4
   sprite: {fileID: 21300000, guid: c155147f6d4df2a45873d892594c7d26, type: 3}
   _type: 0
   animator: 5

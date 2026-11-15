@@ -106,6 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyInstance
   enemyData: {fileID: 11400000, guid: 4fa45647fef8256438f133aa535bc810, type: 2}
   atk: 1
-  health: 24
+  health: 100
   cooldown: 4
   canAttack: 0
+  anim: {fileID: 0}

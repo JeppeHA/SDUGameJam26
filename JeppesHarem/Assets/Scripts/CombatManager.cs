@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class CombatManager : MonoBehaviour
 {
-    private int combatCount = 1;
+    
+    public int combatCount = 1;
     public static CombatManager Instance { get; private set; }
     [SerializeField]
     private List<Transform> creaturePositions = new List<Transform>();
@@ -29,6 +30,8 @@ public class CombatManager : MonoBehaviour
         {
             Instance = this;
         }
+        
+        
     }
 
     private GameManager gameManager;
@@ -38,6 +41,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private Sprite ufoDown;
 
     public UnityEvent combatInitiated;
+    public UnityEvent incrementCombat;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -47,6 +51,9 @@ public class CombatManager : MonoBehaviour
         player = GetComponent<PlayerInstance>();
         
         combatInitiated.AddListener(FindFirstObjectByType<PartyManager>().PopulateTeam);
+        incrementCombat.AddListener(FindFirstObjectByType<EnemyManager>().SetEnemiesCount);
+        
+        
         
         combatInitiated.Invoke();
         
@@ -99,6 +106,7 @@ public class CombatManager : MonoBehaviour
         SetEnemies();
         SpawnEnemies();
         //SpawnPlayer();
+        incrementCombat.Invoke();
     }
 
     private void SetEnemies()
@@ -148,6 +156,7 @@ public class CombatManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+                    
         foreach (CreatureInstance creature in instantiatedPartyMembers) 
         { 
             if (creature.canAttack)
@@ -168,6 +177,7 @@ public class CombatManager : MonoBehaviour
                         Debug.Log("Win!");
                         SceneManager.LoadScene("Map");
                         combatCount++;
+                        Debug.Log(combatCount);
                     }
                 }
             }
