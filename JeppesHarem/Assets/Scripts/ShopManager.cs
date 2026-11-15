@@ -13,7 +13,6 @@ public class ShopManager : MonoBehaviour
         }
         else if (MapNode.selectedShopType == MapNode.ShopType.AbilityShop)
         {
-            gameObject.AddComponent<AbilityShop>();
             AbilityShop abilityShop = gameObject.AddComponent<AbilityShop>();
             abilityShop.LoadShop("AbilityItems");
         }

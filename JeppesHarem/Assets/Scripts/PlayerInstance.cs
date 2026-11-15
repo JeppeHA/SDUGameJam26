@@ -12,7 +12,7 @@ public class PlayerInstance : MonoBehaviour
     public AbilitySO ability2;
 
 
-    private void Start()
+    private void Awake()
     {
         InitializeValues(player);
     }

@@ -24,11 +24,11 @@ public class CreatureInstance : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprite;
-        animator = GetComponent<Animator>();
     }
 
     public void SetStats(CreatureSO creatureData)
     {
+        animator = GetComponent<Animator>();
         creatureInstance = GetComponent<CreatureInstance>();
         creature = creatureData;
         name = creatureData.name;
