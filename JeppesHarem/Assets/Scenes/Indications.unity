@@ -297,7 +297,7 @@ MonoBehaviour:
   - {fileID: 994431713}
   - {fileID: 1718443698}
   - {fileID: 786943209}
-  rhythmManager: {fileID: 2035591697}
+  rhythmManager: {fileID: 0}
   approachTime: 10
 --- !u!4 &143953367
 Transform:
@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d27b69d07bafb514d96e563d2f46af2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonController
-  rhythmManager: {fileID: 2035591697}
+  rhythmManager: {fileID: 0}
   indicator: {fileID: 1966040492}
   indicationTime: 1
   lightUpTime: 0.1
@@ -1959,7 +1959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d27b69d07bafb514d96e563d2f46af2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonController
-  rhythmManager: {fileID: 2035591697}
+  rhythmManager: {fileID: 0}
   indicator: {fileID: 1916903770}
   indicationTime: 1
   lightUpTime: 0.1
@@ -2222,7 +2222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d27b69d07bafb514d96e563d2f46af2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonController
-  rhythmManager: {fileID: 2035591697}
+  rhythmManager: {fileID: 0}
   indicator: {fileID: 295341846}
   indicationTime: 1
   lightUpTime: 0.1
@@ -2738,7 +2738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d27b69d07bafb514d96e563d2f46af2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonController
-  rhythmManager: {fileID: 2035591697}
+  rhythmManager: {fileID: 0}
   indicator: {fileID: 2106493035}
   indicationTime: 1
   lightUpTime: 0.1
@@ -3500,17 +3500,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1966040490}
   m_CullTransparentMesh: 1
---- !u!114 &2035591697 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8758435866790063607, guid: aaa961df65fd9bc4cafe13e0c87a4a94, type: 3}
-  m_PrefabInstance: {fileID: 3306592996905846516}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1c5c36a3823cf34b886e88b54e6e55a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RhythmManager
 --- !u!1 &2106493033
 GameObject:
   m_ObjectHideFlags: 0
@@ -3949,67 +3938,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1000, y: -120}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &3306592996905846516
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1328802589288699894, guid: aaa961df65fd9bc4cafe13e0c87a4a94, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 648.2592
-      objectReference: {fileID: 0}
-    - target: {fileID: 1328802589288699894, guid: aaa961df65fd9bc4cafe13e0c87a4a94, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 199.93103
-      objectReference: {fileID: 0}
-    - target: {fileID: 1328802589288699894, guid: aaa961df65fd9bc4cafe13e0c87a4a94, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1328802589288699894, guid: aaa961df65fd9bc4cafe13e0c87a4a94, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1328802589288699894, guid: aaa961df65fd9bc4cafe13e0c87a4a94, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1328802589288699894, guid: aaa961df65fd9bc4cafe13e0c87a4a94, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1328802589288699894, guid: aaa961df65fd9bc4cafe13e0c87a4a94, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1328802589288699894, guid: aaa961df65fd9bc4cafe13e0c87a4a94, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1328802589288699894, guid: aaa961df65fd9bc4cafe13e0c87a4a94, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1328802589288699894, guid: aaa961df65fd9bc4cafe13e0c87a4a94, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1975025030754673577, guid: aaa961df65fd9bc4cafe13e0c87a4a94, type: 3}
-      propertyPath: m_Name
-      value: RhythmManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5781716021000332864, guid: aaa961df65fd9bc4cafe13e0c87a4a94, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: aaa961df65fd9bc4cafe13e0c87a4a94, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4020,7 +3948,6 @@ SceneRoots:
   - {fileID: 525393606}
   - {fileID: 449368745}
   - {fileID: 1316035855}
-  - {fileID: 3306592996905846516}
   - {fileID: 1750016705}
   - {fileID: 143953367}
   - {fileID: 277251171}
