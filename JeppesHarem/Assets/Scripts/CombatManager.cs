@@ -149,16 +149,4 @@ public class CombatManager : MonoBehaviour
         }
 
     }
-
-    public void UseAbility(AbilitySO ability, EnemySO enemy)
-    {
-        if (ability.canUse == false) //check if ability is off cooldown
-        {
-            return;
-        }
-
-        enemy.hp -= ability.damage; //Applies ability dmg to enemy
-        
-        StartCoroutine(ability.StartCooldown()); //Starts ability cooldown
-    }
 }

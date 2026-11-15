@@ -40,6 +40,8 @@ public class ShopCardDropArea : MonoBehaviour
         {
             abilitySO = (AbilitySO)card.GetComponent<CardController>().abilityToSpawn;
             spriteRenderer.sprite = abilitySO.sprite;
+            shadow.SetActive(true);
+            //GameObject ability = 
         }
         Destroy(card.gameObject);
     }
