@@ -2,13 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonController : MonoBehaviour
 {
     [SerializeField] private RhythmManager rhythmManager;
     [SerializeField] private KeyIndicator indicator;
     [SerializeField] private float indicationTime;
-
+    [SerializeField] private float lightUpTime = 0.1f;
+    [SerializeField] private float visibleTime = 0.5f;
+    private Coroutine lightRoutine;
+    private Color baseColor;
+    
     [Header("Timing windows (seconds)")]
     [SerializeField] private double perfectWindow = 0.05;
     [SerializeField] private double goodWindow = 0.10;
@@ -24,8 +29,10 @@ public class ButtonController : MonoBehaviour
 
     private void Start()
     {
+        baseColor = GetComponent<Image>().color;
         player = FindFirstObjectByType<PlayerInstance>();
     }
+    
 
     public void Register(RhythmNote note) => notes.Enqueue(note);
 
@@ -36,54 +43,64 @@ public class ButtonController : MonoBehaviour
                rhythmManager.SongTime() - notes.Peek().HitTime > missWindow)
         {
             Destroy(notes.Dequeue().gameObject);
-            Debug.Log("Miss (late)");
         }
+    }
+
+    public void LightUp(Color color)
+    {
+
+        GetComponent<Image>().color = color;
+        if (lightRoutine != null) StopCoroutine(lightRoutine);
+        lightRoutine = StartCoroutine(LightRoutine());
+    }
+    
+    private IEnumerator LightRoutine()
+    {
+        float time = 0f;
+        while (time < lightUpTime)
+        {
+            float s = time / lightUpTime;
+            transform.localScale = new Vector3(s, s, s);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        transform.localScale = Vector3.one;
+        
+        yield return new WaitForSeconds(visibleTime);
+        lightRoutine = null;
+        GetComponent<Image>().color = baseColor;
     }
 
     public void CheckHit()
     {
-        Debug.Log(notes.Count);
         if (notes.Count == 0) return;
 
-        // negative = early
-        double diff = rhythmManager.SongTime() - notes.Peek().HitTime; 
+        double diff = rhythmManager.SongTime() - notes.Peek().HitTime;
         double abs = Math.Abs(diff);
 
-        // too early, ignore the press
-        if (abs > missWindow) return; 
+        if (abs > missWindow)
+        {
+            indicator.Show("Miss!", Color.red);
+            return;
+        }
 
         RhythmNote note = notes.Dequeue();
         Destroy(note.gameObject);
 
         if (abs <= perfectWindow)
         {
-            Debug.Log($"Perfect ({diff:F3})");
-            indicator.SetText("Perfect!", Color.yellow);
-            indicator.EnableKeyIndicator();
+            indicator.Show("Perfect!", Color.softYellow);
             player.playerHp += perfectModifier;
         }
         else if (abs <= goodWindow)
         {
-            Debug.Log($"Good ({diff:F3})");
-            indicator.SetText("Good", Color.green);
-            indicator.EnableKeyIndicator();
+            indicator.Show("Good", Color.softGreen);
             player.playerHp += goodModifier;
         }
         else
         {
-            Debug.Log($"Bad ({diff:F3})");
-            Debug.Log($"Good ({diff:F3})");
-            indicator.SetText("Bad!", Color.red);
-            indicator.EnableKeyIndicator();
+            indicator.Show("Bad!", Color.softRed);
             player.playerHp += missModifier;
         }
-
-        StartCoroutine(HideIndicator());
-    }
-
-    private IEnumerator HideIndicator()
-    {
-        yield return new WaitForSeconds(indicationTime);
-        indicator.DisableKeyIndicator();
     }
 }
