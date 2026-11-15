@@ -8,7 +8,7 @@ public class NoteSpawner : MonoBehaviour
     public GameObject rhythmNotePrefab;
     public Transform[] lanePositions;
     [SerializeField] private ButtonController[] laneControllers;
-    [SerializeField] private RhythmManager rhythmManager;
+    public RhythmManager rhythmManager;
     [SerializeField] private float approachTime = 2f; // must be > 0
     private Canvas canvas;
     private GameObject nodeLayout;
@@ -24,8 +24,9 @@ public class NoteSpawner : MonoBehaviour
         Debug.Log(nodeLayout.name);
         sortedNotes = new List<NoteData>(songChart.notes);
         sortedNotes.Sort((a, b) => a.beat.CompareTo(b.beat));
+        rhythmManager = GameObject.FindFirstObjectByType<RhythmManager>();
     }
-
+   
     void Update()
     {
         if (songChart == null) return;
