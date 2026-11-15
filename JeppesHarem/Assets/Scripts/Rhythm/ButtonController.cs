@@ -13,18 +13,27 @@ public class ButtonController : MonoBehaviour
     [SerializeField] private double perfectWindow = 0.05;
     [SerializeField] private double goodWindow = 0.10;
     [SerializeField] private double missWindow = 0.15;
+    [SerializeField] private float perfectModifier = 1f;
+    [SerializeField] private float goodModifier = 0.50f;
+    [SerializeField] private float missModifier = -0.1f;
+
 
     private readonly Queue<RhythmNote> notes = new Queue<RhythmNote>();
 
+    private PlayerInstance player;
+
+    private void Start()
+    {
+        player = FindFirstObjectByType<PlayerInstance>();
+    }
+
     public void Register(RhythmNote note) => notes.Enqueue(note);
-
-
 
     void Update()
     {
         // Auto miss notes the player let pass
         while (notes.Count > 0 &&
-               rhythmManager.songTime() - notes.Peek().HitTime > missWindow)
+               rhythmManager.SongTime() - notes.Peek().HitTime > missWindow)
         {
             Destroy(notes.Dequeue().gameObject);
             Debug.Log("Miss (late)");
@@ -37,7 +46,7 @@ public class ButtonController : MonoBehaviour
         if (notes.Count == 0) return;
 
         // negative = early
-        double diff = rhythmManager.songTime() - notes.Peek().HitTime; 
+        double diff = rhythmManager.SongTime() - notes.Peek().HitTime; 
         double abs = Math.Abs(diff);
 
         // too early, ignore the press
@@ -51,12 +60,14 @@ public class ButtonController : MonoBehaviour
             Debug.Log($"Perfect ({diff:F3})");
             indicator.SetText("Perfect!", Color.yellow);
             indicator.EnableKeyIndicator();
+            player.playerHp += perfectModifier;
         }
         else if (abs <= goodWindow)
         {
             Debug.Log($"Good ({diff:F3})");
             indicator.SetText("Good", Color.green);
             indicator.EnableKeyIndicator();
+            player.playerHp += goodModifier;
         }
         else
         {

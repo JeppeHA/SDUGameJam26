@@ -25,7 +25,7 @@ public class RhythmNote : MonoBehaviour
 
     void Update()
     {
-        double remaining = hitTime - rhythmManager.songTime();
+        double remaining = hitTime - rhythmManager.SongTime();
         float progress = 1f - (float)(remaining / approachTime);
 
         Vector3 pos = transform.localPosition;
