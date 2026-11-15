@@ -35,6 +35,7 @@ public class CombatManager : MonoBehaviour
     private PartyManager partyManager;
     private AbilityManager abilityManager;
     [SerializeField] private PlayerInstance player;
+    [SerializeField] private Sprite ufoDown;
 
     public UnityEvent combatInitiated;
     
@@ -130,6 +131,7 @@ public class CombatManager : MonoBehaviour
             GameObject memberToInstatiate = gameManager.GetComponent<CreatureFactory>().CreatureInstance(partyManager.team[i]);
             instantiatedPartyMembers.Add(memberToInstatiate.GetComponent<CreatureInstance>().creatureInstance);
             instantiatedPartyMembers[i].transform.position = creaturePositions[i].position;
+            memberToInstatiate.transform.parent = creaturePositions[i];
         }
         
         for (int i = 0; i < liveEnemies.Count; i++)
@@ -157,6 +159,7 @@ public class CombatManager : MonoBehaviour
                 {
                     if (liveEnemies[i].health < 0)
                     {
+                        liveEnemies[i].GetComponent<SpriteRenderer>().sprite = ufoDown;
                         liveEnemies.Remove(liveEnemies[i]);
                     }
                     if (liveEnemies.Count == 0)

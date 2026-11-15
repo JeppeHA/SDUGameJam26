@@ -6,6 +6,7 @@ TagManager:
   tags:
   - shopSpawn
   - Card
+  - NodeLayout
   layers:
   - Default
   - TransparentFX

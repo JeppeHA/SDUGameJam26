@@ -19,6 +19,6 @@ MonoBehaviour:
   abilityType: 1
   name: Attack Damage
   desc: Creatures deal more dmg 1.5x
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: b3a6baa388a695d41a07f02bcb458c44, type: 3}
   healValue: 0
   buffMult: 1.5
