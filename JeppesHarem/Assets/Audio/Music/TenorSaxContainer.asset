@@ -1,43 +1,33 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1233149941 &-8508267518512956926
+--- !u!1233149941 &1918294884356527066
 AudioContainerElement:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TenorSaxCutAudio0_{-8508267518512956926}
-  m_AudioClip: {fileID: 8300000, guid: 673fd91f107a88e45a97698ec2746d3e, type: 3}
+  m_Name: Track0_{1918294884356527066}
+  m_AudioClip: {fileID: 8300000, guid: 621b200971762bb4e89a4ee59a2c1fe2, type: 3}
   m_Volume: 0
   m_Enabled: 1
---- !u!1233149941 &-7401117044579743077
+--- !u!1233149941 &5644499070047168062
 AudioContainerElement:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TenorSaxCutAudio0_{-7401117044579743077}
-  m_AudioClip: {fileID: 8300000, guid: 673fd91f107a88e45a97698ec2746d3e, type: 3}
+  m_Name: Track1_{5644499070047168062}
+  m_AudioClip: {fileID: 8300000, guid: 5ca58febb204c8e43b876551217ee5c2, type: 3}
   m_Volume: 0
   m_Enabled: 1
---- !u!1233149941 &-4989430408921459325
+--- !u!1233149941 &5951805836432285943
 AudioContainerElement:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TenorSaxCutAudio0_{-4989430408921459325}
-  m_AudioClip: {fileID: 8300000, guid: 673fd91f107a88e45a97698ec2746d3e, type: 3}
-  m_Volume: 0
-  m_Enabled: 1
---- !u!1233149941 &-1601546937526892858
-AudioContainerElement:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: TenorSaxCutAudio0_{-1601546937526892858}
-  m_AudioClip: {fileID: 8300000, guid: 673fd91f107a88e45a97698ec2746d3e, type: 3}
+  m_Name: Track3_{5951805836432285943}
+  m_AudioClip: {fileID: 8300000, guid: c1e82a75128512a468112cad54de8bc2, type: 3}
   m_Volume: 0
   m_Enabled: 1
 --- !u!1307931743 &6418180475301049370
@@ -47,7 +37,7 @@ AudioRandomContainer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: TenorSaxContainer
-  m_Volume: 0
+  m_Volume: -15
   m_Pitch: 0
   m_AutomaticTriggerTime: 0
   m_LoopCount: 10
@@ -56,16 +46,26 @@ AudioRandomContainer:
   m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
   m_LoopCountRandomizationRange: {x: 0, y: 0}
   m_Elements:
-  - {fileID: -7401117044579743077}
-  - {fileID: -4989430408921459325}
-  - {fileID: -1601546937526892858}
-  - {fileID: -8508267518512956926}
-  m_AvoidRepeatingLast: 1
+  - {fileID: 1918294884356527066}
+  - {fileID: 5644499070047168062}
+  - {fileID: 7247228174357416906}
+  - {fileID: 5951805836432285943}
+  m_AvoidRepeatingLast: 0
   m_PlaybackMode: 2
-  m_TriggerMode: 1
+  m_TriggerMode: 0
   m_AutomaticTriggerMode: 1
   m_LoopMode: 1
   m_VolumeRandomizationEnabled: 0
   m_PitchRandomizationEnabled: 0
   m_AutomaticTriggerTimeRandomizationEnabled: 0
   m_LoopCountRandomizationEnabled: 0
+--- !u!1233149941 &7247228174357416906
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Track2_{7247228174357416906}
+  m_AudioClip: {fileID: 8300000, guid: 217b385bb378cec46993b202b04d764a, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
