@@ -431,6 +431,15 @@ MonoBehaviour:
   - {fileID: 1774723309}
   sceneFader: {fileID: 1125471663}
   spriteChanger: {fileID: 0}
+  allMapNodes:
+  - {fileID: 1732122510}
+  - {fileID: 1800704533}
+  - {fileID: 1774723309}
+  - {fileID: 1512666705}
+  - {fileID: 1256937442}
+  - {fileID: 1404707152}
+  - {fileID: 518022782}
+  - {fileID: 990421802}
 --- !u!114 &518022783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1175,6 +1184,15 @@ MonoBehaviour:
   - {fileID: 1512666705}
   sceneFader: {fileID: 1125471663}
   spriteChanger: {fileID: 0}
+  allMapNodes:
+  - {fileID: 1732122510}
+  - {fileID: 1800704533}
+  - {fileID: 1774723309}
+  - {fileID: 1512666705}
+  - {fileID: 1256937442}
+  - {fileID: 1404707152}
+  - {fileID: 518022782}
+  - {fileID: 990421802}
 --- !u!114 &990421803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1761,6 +1779,15 @@ MonoBehaviour:
   - {fileID: 1800704533}
   sceneFader: {fileID: 1125471663}
   spriteChanger: {fileID: 0}
+  allMapNodes:
+  - {fileID: 1732122510}
+  - {fileID: 1800704533}
+  - {fileID: 1774723309}
+  - {fileID: 1512666705}
+  - {fileID: 1256937442}
+  - {fileID: 1404707152}
+  - {fileID: 518022782}
+  - {fileID: 990421802}
 --- !u!114 &1256937443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2126,6 +2153,15 @@ MonoBehaviour:
   - {fileID: 1512666705}
   sceneFader: {fileID: 1125471663}
   spriteChanger: {fileID: 0}
+  allMapNodes:
+  - {fileID: 1732122510}
+  - {fileID: 1800704533}
+  - {fileID: 1774723309}
+  - {fileID: 1512666705}
+  - {fileID: 1256937442}
+  - {fileID: 1404707152}
+  - {fileID: 518022782}
+  - {fileID: 990421802}
 --- !u!114 &1404707153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2464,6 +2500,7 @@ GameObject:
   - component: {fileID: 1512666706}
   - component: {fileID: 1512666705}
   - component: {fileID: 1512666704}
+  - component: {fileID: 1512666708}
   m_Layer: 5
   m_Name: CombatNode_4
   m_TagString: Untagged
@@ -2564,7 +2601,16 @@ MonoBehaviour:
   rank: 4
   connectedNodes: []
   sceneFader: {fileID: 1125471663}
-  spriteChanger: {fileID: 0}
+  spriteChanger: {fileID: 1512666708}
+  allMapNodes:
+  - {fileID: 1732122510}
+  - {fileID: 1800704533}
+  - {fileID: 1774723309}
+  - {fileID: 1512666705}
+  - {fileID: 1256937442}
+  - {fileID: 1404707152}
+  - {fileID: 518022782}
+  - {fileID: 990421802}
 --- !u!114 &1512666706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2603,6 +2649,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512666702}
   m_CullTransparentMesh: 1
+--- !u!114 &1512666708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512666702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b337d467e47b924e8ae8a9df3837866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteChanger
+  button: {fileID: 1512666704}
+  sprite: {fileID: 21300000, guid: 091bc549d11980c4bbfbb7ddba755808, type: 3}
 --- !u!1 &1625390938
 GameObject:
   m_ObjectHideFlags: 0
@@ -2836,6 +2896,15 @@ MonoBehaviour:
   - {fileID: 518022782}
   sceneFader: {fileID: 1125471663}
   spriteChanger: {fileID: 1732122513}
+  allMapNodes:
+  - {fileID: 1732122510}
+  - {fileID: 1800704533}
+  - {fileID: 1774723309}
+  - {fileID: 1512666705}
+  - {fileID: 1256937442}
+  - {fileID: 1404707152}
+  - {fileID: 518022782}
+  - {fileID: 990421802}
 --- !u!114 &1732122511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3005,6 +3074,15 @@ MonoBehaviour:
   - {fileID: 1404707152}
   sceneFader: {fileID: 1125471663}
   spriteChanger: {fileID: 1774723312}
+  allMapNodes:
+  - {fileID: 1732122510}
+  - {fileID: 1800704533}
+  - {fileID: 1774723309}
+  - {fileID: 1512666705}
+  - {fileID: 1256937442}
+  - {fileID: 1404707152}
+  - {fileID: 518022782}
+  - {fileID: 990421802}
 --- !u!114 &1774723310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3173,6 +3251,15 @@ MonoBehaviour:
   - {fileID: 990421802}
   sceneFader: {fileID: 1125471663}
   spriteChanger: {fileID: 1800704536}
+  allMapNodes:
+  - {fileID: 1732122510}
+  - {fileID: 1800704533}
+  - {fileID: 1774723309}
+  - {fileID: 1512666705}
+  - {fileID: 1256937442}
+  - {fileID: 1404707152}
+  - {fileID: 518022782}
+  - {fileID: 990421802}
 --- !u!114 &1800704534
 MonoBehaviour:
   m_ObjectHideFlags: 0
