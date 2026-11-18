@@ -11,11 +11,13 @@ public class MapNode : MonoBehaviour
         Combat,
         Shop
     }
+
 public enum ShopType
     {
         CreatureShop,
         AbilityShop
     }
+
     public NodeType nodeType;
     public ShopType shopType;
     public static ShopType selectedShopType;
@@ -25,17 +27,24 @@ public enum ShopType
     public SceneFader sceneFader;
     public SpriteChanger spriteChanger;
 
-
     [SerializeField] List<MapNode> allMapNodes = new List<MapNode> ();
+
     private List<int> completedNodes = new List<int>();
     void Start()
     {
+        if (completedNodeRank == 4)
+        {
+            SceneManager.LoadScene("Credits");
+        }
+
+        spriteChanger = GetComponent<SpriteChanger>();
+
         completedNodes = FindFirstObjectByType<GameManager>().GetComponent<MapManager>().completedNodes;
         Debug.Log(completedNodes.Count);
 
         for (int i = 0; i < allMapNodes.Count; i++) 
         {
-            if (completedNodes.Contains(i) && allMapNodes[i].nodeType == NodeType.Combat)
+            if (completedNodes.Contains(i) /*&& allMapNodes[i].nodeType == NodeType.Combat*/)
             {
                 allMapNodes[i].spriteChanger.SpriteChange();
             }
@@ -46,15 +55,11 @@ public enum ShopType
             foreach (MapNode node in FindObjectsByType<MapNode>(FindObjectsSortMode.None))
             {
                 node.GetComponent<Button>().interactable = false;
-
-                if (completedNodeRank == 4)
-                {
-                    SceneManager.LoadScene("Credits");
-                }
             }
-            CompleteNode();
+            CompleteNode(allMapNodes[completedNodes[completedNodes.Count - 1]]);
         }
     }
+
     public void SelectNode()
     {
         for (int i = 0; i < allMapNodes.Count; i++)
@@ -78,12 +83,12 @@ public enum ShopType
         }
         sceneFader.FadeAndLoadScene();
     }
-    public void CompleteNode()
+    public void CompleteNode(MapNode node)
     {
-        GetComponent<UnityEngine.UI.Button>().interactable = false;
-        foreach (MapNode node in connectedNodes)
+        //GetComponent<UnityEngine.UI.Button>().interactable = false;
+        foreach (MapNode connection in node.connectedNodes)
         {
-            node.GetComponent<UnityEngine.UI.Button>().interactable = true;
+            connection.GetComponent<UnityEngine.UI.Button>().interactable = true;
         }
     }
 }
