@@ -29,6 +29,9 @@ public class CombatAbilityController : MonoBehaviour
         {
             abilityImages[i].sprite = abilityManager.abilities[i].sprite;
             sliders[i].value = sliders[i].minValue;
+            sliders[i].maxValue = abilityManager.abilities[i].cooldown;
+            abilityManager.abilities[i].active = false;
+            abilityManager.abilities[i].canUse = true;
         }
     }
 
@@ -133,9 +136,7 @@ public class CombatAbilityController : MonoBehaviour
 
     public void UseAbility(int i)
     {
-
-        StartCoroutine(StartCooldown(i));
         StartCoroutine(Duration(i));
-        
+        StartCoroutine(StartCooldown(i));
     }
 }

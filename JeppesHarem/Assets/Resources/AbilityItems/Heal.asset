@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0a233b69f444f249c514ae6c757b11, type: 3}
   m_Name: Heal
   m_EditorClassIdentifier: Assembly-CSharp::AbilitySO
-  cooldown: 15
+  cooldown: 4
   duration: 2
-  canUse: 0
+  canUse: 1
   active: 0
   abilityType: 0
   name: Vibes
   desc: Notes vibe harder 3x
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: b029340b7e4c4a44d8b9bddaad7eb22d, type: 3}
   healValue: 0
   buffMult: 3
