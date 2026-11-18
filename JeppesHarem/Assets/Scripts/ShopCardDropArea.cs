@@ -26,8 +26,6 @@ public class ShopCardDropArea : MonoBehaviour
 
     public void OnCardDrop(GameObject card)
     {
-        Debug.Log("test");
-
         if (shopManager.TryGetComponent(out CreatureShop creatureShop))
         {
             if (creatureSO != null) 
@@ -60,7 +58,6 @@ public class ShopCardDropArea : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-
         if (!collision.GetComponent<DragAndDrop>().isDragging)
         {
             OnCardDrop(collision.gameObject);

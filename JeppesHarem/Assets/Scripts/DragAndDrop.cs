@@ -8,12 +8,14 @@ public class DragAndDrop : MonoBehaviour
 
     private float startXPos;
     private float startYPos;
+    private Vector3 startPos;
 
     public bool isDragging = false;
 
     private void Start()
     {
         myCam = Camera.main;
+        startPos = transform.position;
     }
 
     private void Update()
@@ -44,6 +46,13 @@ public class DragAndDrop : MonoBehaviour
     private void OnMouseUp()
     {
         isDragging = false;
+        StartCoroutine(waitAFrame());
+    }
+
+    IEnumerator waitAFrame()
+    {
+        yield return new WaitForSeconds(0.05f);
+        transform.position = startPos;
     }
 
     public void DragObject()
