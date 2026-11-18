@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8201950211265145605}
   - component: {fileID: 6231508483926024117}
   - component: {fileID: 6302725203929555142}
+  - component: {fileID: -6847692485881088073}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PartyManager
   starterCreatureData: {fileID: 11400000, guid: fbb550df4ad6a4e59800c8d1a64eba8b, type: 2}
   team:
-  - {fileID: 11400000, guid: 17f698c0e5852904e8567a46b82e5c93, type: 2}
+  - {fileID: 11400000, guid: 1cd992333ddc7964591920157441c4e3, type: 2}
   teamCap: 3
 --- !u!114 &6231508483926024117
 MonoBehaviour:
@@ -89,6 +90,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5538be1a089795948821ac9a1a9b98cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AbilityManager
-  abilities:
-  - {fileID: 11400000, guid: 5f4634b14ed7fb64b978b41947f0adb4, type: 2}
-  - {fileID: 11400000, guid: cd06ff467bd7b944ba9d5abb12ff16da, type: 2}
+  abilities: []
+--- !u!114 &-6847692485881088073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5655251295685721038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a888df500a3ea8b48a9aee3610b0352b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapManager
+  completedNodes: []

@@ -39,7 +39,7 @@ public class ShopManager : MonoBehaviour
             for (int i = 0; i < abilityManager.abilities.Count; i++)
             {
                 Debug.Log(i);
-                slots[i].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = partyManager.team[i].sprite;
+                slots[i].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = abilityManager.abilities[i].sprite;
                 slots[i].transform.GetChild(1).gameObject.SetActive(true);
             }
         }
