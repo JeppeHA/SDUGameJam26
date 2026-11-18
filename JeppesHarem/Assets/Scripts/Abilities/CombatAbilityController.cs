@@ -16,6 +16,8 @@ public class CombatAbilityController : MonoBehaviour
 
     [SerializeField] private Slider[] sliders;
 
+    
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,6 +35,11 @@ public class CombatAbilityController : MonoBehaviour
             abilityManager.abilities[i].active = false;
             abilityManager.abilities[i].canUse = true;
         }
+    }
+    public void Initialize(CombatManager combatManager, AbilityManager abilityManager)
+    {
+        this.combatManager = combatManager;
+        this.abilityManager = abilityManager;
     }
 
     private void Update()

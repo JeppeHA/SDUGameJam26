@@ -8,7 +8,7 @@ public class PartyManager : MonoBehaviour
     private GameObject starterCreaturePrefab;
     public CreatureSO starterCreatureData;
     public static PartyManager Instance {  get; private set; }
-
+    
     private void Awake()
     {
 
