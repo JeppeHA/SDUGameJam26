@@ -24,7 +24,7 @@ public enum ShopType
     public int rank = 0;
     public List<MapNode> connectedNodes = new List<MapNode>();
     public static int completedNodeRank = -1;
-    public SceneFader sceneFader;
+    private SceneFader sceneFader;  
     public SpriteChanger spriteChanger;
 
     [SerializeField] List<MapNode> allMapNodes = new List<MapNode> ();
@@ -38,9 +38,9 @@ public enum ShopType
         }
 
         spriteChanger = GetComponent<SpriteChanger>();
+        sceneFader = FindFirstObjectByType<GameManager>().GetComponent<SceneFader>();
 
         completedNodes = FindFirstObjectByType<GameManager>().GetComponent<MapManager>().completedNodes;
-        Debug.Log(completedNodes.Count);
 
         for (int i = 0; i < allMapNodes.Count; i++) 
         {
@@ -74,14 +74,14 @@ public enum ShopType
 
         if (nodeType == NodeType.Combat)
         {
-            sceneFader.sceneName = "NotePixels";
+            sceneFader.FadeAndLoadScene("NotePixels");
         }
         else if (nodeType == NodeType.Shop)
         {
             selectedShopType = shopType;
-            sceneFader.sceneName = "Shop";
+            sceneFader.FadeAndLoadScene("Shop");
         }
-        sceneFader.FadeAndLoadScene();
+        
     }
     public void CompleteNode(MapNode node)
     {

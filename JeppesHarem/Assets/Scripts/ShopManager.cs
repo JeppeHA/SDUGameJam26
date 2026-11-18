@@ -34,7 +34,7 @@ public class ShopManager : MonoBehaviour
             abilityShop.LoadShop("AbilityItems");
 
             Destroy(slots[1]);
-            slots.RemoveAt(1 );
+            slots.RemoveAt(1);
 
             for (int i = 0; i < abilityManager.abilities.Count; i++)
             {

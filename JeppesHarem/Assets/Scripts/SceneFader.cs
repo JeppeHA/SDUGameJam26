@@ -5,22 +5,34 @@ using System.Collections;
 
 public class SceneFader : MonoBehaviour
 {
-    public Image image;
-    public string sceneName;
-    public float duration = 1;
-    public AudioSource audioSource;
-    private void Start()
-    {   
-        StartCoroutine(FadeOut());
-    }
-    
-    public void FadeAndLoadScene()
+    [SerializeField] private Image image;
+    //public string sceneName;
+    private float duration = 0.75f;
+    private AudioSource audioSource;
+
+    private void OnEnable()
     {
-        audioSource.Play();
-        StartCoroutine(FadeIn());
+        SceneManager.sceneLoaded += LoadedScene;
     }
 
-    IEnumerator FadeIn()
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    private void LoadedScene(Scene current, LoadSceneMode loadMode)
+    {
+        image = GameObject.FindGameObjectWithTag("sceneFade").GetComponent<Image>();
+        StartCoroutine(FadeOut());
+    }
+
+    public void FadeAndLoadScene(string sceneName)
+    {
+        audioSource.Play();
+        StartCoroutine(FadeIn(sceneName));
+    }
+
+    IEnumerator FadeIn(string sceneName)
     {
         image.enabled = true;
         float t = 0;
@@ -38,12 +50,14 @@ public class SceneFader : MonoBehaviour
     
     IEnumerator FadeOut()
     {
-        float t = 0;
+        float t = duration;
         Color c = image.color;
-        while (t < 1)
+        while (t > 0)
         {
-            t += Time.deltaTime;
-            c.a = 1 - (t / 1f);
+            t -= Time.deltaTime;
+            c.a = t / duration;
+            Debug.Log(t / duration);
+            Debug.Log(c);
             image.color = c;
             yield return null;
         }

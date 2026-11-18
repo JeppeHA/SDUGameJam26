@@ -7,6 +7,7 @@ TagManager:
   - shopSpawn
   - Card
   - NodeLayout
+  - sceneFade
   layers:
   - Default
   - TransparentFX
